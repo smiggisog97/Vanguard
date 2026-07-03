@@ -9,10 +9,8 @@ import AuthorCard from "@/components/ui/author-card";
 import Button from "@/components/ui/button";
 import ResearchCard from "@/components/ui/research-card";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
-import FunnelCta, {
-  ResearchMetadata,
-  TagChips,
-} from "@/components/ui/funnel-cta";
+import FunnelCta, { TagChips } from "@/components/ui/funnel-cta";
+import ResearchMetadata from "@/components/ui/research-metadata";
 import BookmarkButton, { ShareButton } from "@/components/ui/bookmark-button";
 import ReportDocument from "@/components/report-document";
 import ReportGate from "@/components/report-gate";
@@ -112,21 +110,26 @@ function ReportDetailInner({
           aria-label="Table of contents"
           className="lg:sticky lg:top-24 lg:self-start"
         >
-          <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
-            Contents
-          </p>
-          <ol className="mt-3 space-y-2">
-            {sections.map((s, i) => (
-              <li key={s.id}>
-                <a
-                  href={`#section-${s.id}`}
-                  className="text-[14px] text-ink hover:text-driftwood focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-                >
-                  {i + 1}. {s.title}
-                </a>
-              </li>
-            ))}
-          </ol>
+          <div
+            className="bg-warm-sand p-5"
+            style={{ borderRadius: "16px" }}
+          >
+            <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
+              Contents
+            </p>
+            <ol className="mt-3 space-y-2">
+              {sections.map((s, i) => (
+                <li key={s.id}>
+                  <a
+                    href={`#section-${s.id}`}
+                    className="text-[14px] text-ink hover:text-driftwood focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                  >
+                    {i + 1}. {s.title}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
         </nav>
 
         <div ref={documentRef}>

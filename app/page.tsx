@@ -7,32 +7,43 @@ import CTABanner from "@/components/ui/cta-banner";
 import Newsletter from "@/components/ui/newsletter";
 import LogoMarquee from "@/components/ui/logo-marquee";
 import SoftBlurIn from "@/components/ui/soft-blur-in";
+import { PillarIcon, type PillarIconName } from "@/components/ui/pillar-icons";
+import { AdvisoryServiceIcon } from "@/components/ui/advisory-service-icons";
 import { reports, metrics, insights, advisoryServices } from "@/lib/data";
 
-const pillars = [
+const pillars: {
+  title: string;
+  description: string;
+  href: string;
+  icon: PillarIconName;
+}[] = [
   {
     title: "Business Research",
     description:
       "Sector, macro, and capital-markets briefs: free for lead capture, paid for depth.",
     href: "/research",
+    icon: "research",
   },
   {
     title: "Bespoke Research",
     description:
       "Commissioned, confidential research for institutions, corporates, and investors.",
     href: "/bespoke",
+    icon: "bespoke",
   },
   {
     title: "Corporate Advisory",
     description:
       "Capital strategy, investor readiness, valuation, and governance for corporates.",
     href: "/advisory",
+    icon: "advisory",
   },
   {
     title: "Advanced Incubator",
     description:
       "AI-driven cohorts for family business owners and startup founders.",
     href: "/incubator",
+    icon: "incubator",
   },
 ];
 
@@ -104,7 +115,8 @@ export default function Home() {
               className="card-lift pressable group bg-warm-sand p-[31px] transition-colors"
               style={{ borderRadius: "16px" }}
             >
-              <h3 className="font-display text-[24px] text-ink group-hover:text-hover">
+              <PillarIcon name={p.icon} />
+              <h3 className="mt-4 font-display text-[24px] text-ink group-hover:text-hover">
                 {p.title}
               </h3>
               <p className="mt-3 text-[15px] leading-[1.5] text-driftwood">
@@ -143,7 +155,8 @@ export default function Home() {
                 className="bg-warm-sand p-5"
                 style={{ borderRadius: "16px" }}
               >
-                <p className="font-display text-[18px] text-ink">{s.title}</p>
+                <AdvisoryServiceIcon title={s.title} />
+                <p className="mt-3 font-display text-[18px] text-ink">{s.title}</p>
                 <p className="mt-2 text-[14px] leading-[1.4] text-driftwood">
                   {s.description}
                 </p>

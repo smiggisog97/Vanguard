@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type { Report } from "@/lib/data";
 
 export default function FunnelCta({
   href,
@@ -25,38 +24,6 @@ export default function FunnelCta({
         {label}
       </Link>
     </div>
-  );
-}
-
-export function ResearchMetadata({ report }: { report: Report }) {
-  const items = [
-    { label: "Author", value: report.author },
-    { label: "Published", value: report.date },
-    { label: "Updated", value: report.updatedAt },
-    { label: "Sector", value: report.category },
-    { label: "Industry", value: report.industry },
-    { label: "Country", value: report.country },
-    { label: "Type", value: report.researchType },
-    {
-      label: "Access",
-      value: report.tier === "Free" ? "Free" : `Paid · ${report.price}`,
-    },
-  ];
-
-  return (
-    <dl
-      className="grid grid-cols-2 gap-4 bg-warm-sand p-6 sm:grid-cols-4"
-      style={{ borderRadius: "16px" }}
-    >
-      {items.map((item) => (
-        <div key={item.label}>
-          <dt className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
-            {item.label}
-          </dt>
-          <dd className="mt-1 text-[14px] text-ink">{item.value}</dd>
-        </div>
-      ))}
-    </dl>
   );
 }
 
