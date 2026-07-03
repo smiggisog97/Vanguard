@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Report } from "@/lib/data";
+import { Chip } from "@/components/ui/funnel-cta";
 
 export default function ResearchCard({
   report,
@@ -29,15 +30,11 @@ export default function ResearchCard({
           />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
-            <span>{report.researchType}</span>
-            <span>·</span>
-            <span>{report.country}</span>
-            <span
-              className={report.tier === "Free" ? "text-royal" : "text-gold"}
-            >
-              {report.tier === "Free" ? "Free" : `Paid · ${report.price}`}
-            </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <Chip>{report.researchType}</Chip>
+            <Chip tone={report.tier === "Free" ? "royal" : "gold"}>
+              {report.tier === "Free" ? "Free" : report.price}
+            </Chip>
           </div>
           <h3 className="mt-2 font-display text-[20px] leading-[1.3] text-ink group-hover:text-hover">
             {report.title}
@@ -75,14 +72,10 @@ export default function ResearchCard({
         </div>
         <div className="p-[31px]">
           <div className="flex items-start justify-between gap-3">
-            <span className="min-w-0 truncate font-mono text-xs font-semibold uppercase tracking-wide text-hover">
-              {report.researchType} · {report.country}
-            </span>
-            <span
-              className={`shrink-0 whitespace-nowrap font-mono text-xs font-semibold uppercase tracking-wide ${report.tier === "Free" ? "text-royal" : "text-gold"}`}
-            >
-              {report.tier === "Free" ? "Free" : `Paid · ${report.price}`}
-            </span>
+            <Chip>{report.researchType}</Chip>
+            <Chip tone={report.tier === "Free" ? "royal" : "gold"}>
+              {report.tier === "Free" ? "Free" : report.price}
+            </Chip>
           </div>
           <h3 className="mt-4 font-display text-[22px] leading-[1.3] text-hover group-hover:text-hover">
             {report.title}

@@ -64,14 +64,31 @@ type ChipTone = "default" | "gold" | "royal" | "moss";
 
 export type ChipItem = string | { label: string; tone?: ChipTone };
 
-export function TagChips({ tags }: { tags: ChipItem[] }) {
-  const tones: Record<ChipTone, string> = {
-    default: "border border-ash-border text-hover",
-    gold: "border border-gold text-gold",
-    royal: "border border-royal text-royal",
-    moss: "border border-moss text-moss",
-  };
+const chipTones: Record<ChipTone, string> = {
+  default: "border border-fog text-hover",
+  gold: "border border-gold text-gold",
+  royal: "border border-royal text-royal",
+  moss: "border border-moss text-moss",
+};
 
+export function Chip({
+  children,
+  tone = "default",
+}: {
+  children: React.ReactNode;
+  tone?: ChipTone;
+}) {
+  return (
+    <span
+      className={`inline-flex shrink-0 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wide ${chipTones[tone]}`}
+      style={{ borderRadius: "9999px" }}
+    >
+      {children}
+    </span>
+  );
+}
+
+export function TagChips({ tags }: { tags: ChipItem[] }) {
   return (
     <div className="flex flex-wrap gap-2" role="list" aria-label="Tags">
       {tags.map((tag, index) => {
@@ -80,14 +97,9 @@ export function TagChips({ tags }: { tags: ChipItem[] }) {
           typeof tag === "string" ? "default" : (tag.tone ?? "default");
 
         return (
-          <span
-            key={`${label}-${index}`}
-            role="listitem"
-            className={`px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wide ${tones[tone]}`}
-            style={{ borderRadius: "9999px" }}
-          >
+          <Chip key={`${label}-${index}`} tone={tone}>
             {label}
-          </span>
+          </Chip>
         );
       })}
     </div>
