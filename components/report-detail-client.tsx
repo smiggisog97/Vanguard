@@ -57,6 +57,7 @@ function ReportDetailInner({
           className="object-cover"
           style={{ filter: "grayscale(1)" }}
           priority
+          unoptimized
         />
       </div>
 
@@ -121,7 +122,7 @@ function ReportDetailInner({
         </ul>
       </section>
 
-      <section className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[220px_1fr_380px]">
+      <section className={`mt-10 grid grid-cols-1 gap-12 ${unlocked ? "lg:grid-cols-[220px_1fr]" : "lg:grid-cols-[220px_1fr_380px]"}`}>
         <nav
           aria-label="Table of contents"
           className="lg:sticky lg:top-24 lg:self-start"
@@ -180,7 +181,7 @@ function ReportDetailInner({
           <h2 className="font-display text-[24px] text-ink">
             Related Research
           </h2>
-          <div className="reveal-stagger mt-6 grid grid-cols-1 gap-1 md:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-1 md:grid-cols-3">
             {related.map((r) => (
               <ResearchCard key={r.slug} report={r} />
             ))}

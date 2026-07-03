@@ -28,6 +28,7 @@ export default function ResearchCard({
             fill
             className="object-cover"
             style={{ filter: "grayscale(1)" }}
+            unoptimized
           />
         </div>
         <div className="min-w-0 flex-1">
@@ -70,6 +71,7 @@ export default function ResearchCard({
             className="object-cover"
             style={{ filter: "grayscale(1)" }}
             loading="lazy"
+            unoptimized
           />
         </div>
         <div className="p-[31px]">

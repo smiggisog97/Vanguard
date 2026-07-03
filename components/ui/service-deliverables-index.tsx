@@ -9,7 +9,7 @@ export default function ServiceDeliverablesIndex({
   services: { title: string; deliverables: string[] }[];
 }) {
   return (
-    <div className="reveal-stagger mt-6 divide-y divide-fog">
+    <div className="reveal-stagger mt-6 divide-y divide-fog/40">
       {services.map((service, index) => {
         const icon = getAdvisoryServiceIcon(service.title);
         return (

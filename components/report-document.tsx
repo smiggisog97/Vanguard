@@ -32,7 +32,7 @@ export default function ReportDocument({ report, unlocked }: Props) {
         )}
       </div>
 
-      <div className="reveal-stagger mt-4 grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="mt-4 grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-4">
         {Array.from({ length: pageCount }, (_, i) => i + 1).map((page) => (
           <div
             key={page}
@@ -46,6 +46,7 @@ export default function ReportDocument({ report, unlocked }: Props) {
               className="object-cover"
               style={{ filter: "grayscale(1)" }}
               loading="lazy"
+              unoptimized
             />
             <span className="absolute bottom-2 right-2 bg-parchment px-2 py-0.5 font-mono text-[10px] text-driftwood">
               Page {page}
@@ -61,7 +62,7 @@ export default function ReportDocument({ report, unlocked }: Props) {
                   className="relative aspect-[3/4] overflow-hidden bg-warm-sand"
                   style={{ borderRadius: "16px" }}
                 >
-                  <div className="absolute inset-0 flex items-center justify-center bg-parchment/80 px-4 text-center">
+                  <div className="absolute inset-0 flex items-center justify-center px-4 text-center">
                     <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
                       {report.tier === "Paid"
                         ? "Purchase to unlock"
