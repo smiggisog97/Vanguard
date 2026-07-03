@@ -1,65 +1,205 @@
-import Image from "next/image";
+import Link from "next/link";
+import Button from "@/components/ui/button";
+import SectionHeader from "@/components/ui/section-header";
+import ResearchCard from "@/components/ui/research-card";
+import MetricCard from "@/components/ui/metric-card";
+import CTABanner from "@/components/ui/cta-banner";
+import Newsletter from "@/components/ui/newsletter";
+import LogoMarquee from "@/components/ui/logo-marquee";
+import SoftBlurIn from "@/components/ui/soft-blur-in";
+import { reports, metrics, insights, advisoryServices } from "@/lib/data";
+
+const pillars = [
+  {
+    title: "Business Research",
+    description:
+      "Sector, macro, and capital-markets briefs: free for lead capture, paid for depth.",
+    href: "/research",
+  },
+  {
+    title: "Bespoke Research",
+    description:
+      "Commissioned, confidential research for institutions, corporates, and investors.",
+    href: "/bespoke",
+  },
+  {
+    title: "Corporate Advisory",
+    description:
+      "Capital strategy, investor readiness, valuation, and governance for corporates.",
+    href: "/advisory",
+  },
+  {
+    title: "Advanced Incubator",
+    description:
+      "AI-driven cohorts for family business owners and startup founders.",
+    href: "/incubator",
+  },
+];
 
 export default function Home() {
+  const featured = reports.slice(0, 3);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div>
+      {/* Hero */}
+      <section className="mx-auto max-w-[1200px] px-6 pt-[80px] pb-[60px]">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr]">
+          <SoftBlurIn
+            text="Frontier research that converts into capital and counsel for enterprise in emerging Asia."
+            className="font-display text-[40px] leading-[1.08] tracking-[-0.96px] text-ink md:text-[48px]"
+          />
+          <div className="reveal-section flex flex-col justify-between gap-6">
+            <p className="text-[16px] leading-[1.5] text-driftwood">
+              Vanguard turns published sector, macro, and capital-markets
+              research into bespoke research, corporate advisory, and executive
+              education for founders, family businesses, corporates, and
+              investors across Bangladesh, India, Thailand, Singapore, and the
+              wider region.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button href="/research" variant="dark">
+                Explore Research
+              </Button>
+              <Button href="/contact" variant="ghost">
+                Book Advisory Call
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <LogoMarquee />
+
+      {/* Featured Research */}
+      <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeader
+            eyebrow="Latest Research"
+            title="Research that establishes credibility"
+            description="Free and paid briefs across sector, macro, and capital-markets coverage: the visible front door of the platform."
+          />
+          <Link href="/research" className="text-[15px] text-ink">
+            View all research →
+          </Link>
+        </div>
+        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {featured.map((report) => (
+            <ResearchCard key={report.slug} report={report} />
+          ))}
+        </div>
+      </section>
+
+      {/* Four Product Pillars */}
+      <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
+        <SectionHeader
+          eyebrow="The Platform"
+          title="From research discovery to advisory mandate"
+          description="Every product line moves a visitor deeper into a single funnel, not four disconnected services."
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {pillars.map((p) => (
+            <Link
+              key={p.title}
+              href={p.href}
+              className="card-lift pressable group bg-warm-sand p-[31px] transition-colors"
+              style={{ borderRadius: "16px" }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <h3 className="font-display text-[24px] text-ink group-hover:text-hover">
+                {p.title}
+              </h3>
+              <p className="mt-3 text-[15px] leading-[1.5] text-driftwood">
+                {p.description}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Why Vanguard */}
+      <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
+        <SectionHeader
+          eyebrow="Why Vanguard"
+          title="Built on research credibility, led by practitioners"
+        />
+        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {metrics.map((m) => (
+            <MetricCard key={m.label} value={m.value} label={m.label} />
+          ))}
+        </div>
+      </section>
+
+      {/* Corporate Advisory */}
+      <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+          <SectionHeader
+            eyebrow="Corporate Advisory"
+            title="Capital strategy and governance for corporates and family businesses"
+            description="Five service lines that move clients from research credibility to institutional capital readiness."
+          />
+          <div className="reveal-stagger grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {advisoryServices.slice(0, 4).map((s) => (
+              <div
+                key={s.title}
+                className="bg-warm-sand p-5"
+                style={{ borderRadius: "16px" }}
+              >
+                <p className="font-display text-[18px] text-ink">{s.title}</p>
+                <p className="mt-2 text-[14px] leading-[1.4] text-driftwood">
+                  {s.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-8">
+          <Button href="/advisory" variant="dark">
+            Explore Corporate Advisory
+          </Button>
+        </div>
+      </section>
+
+      {/* AI Programs */}
+      <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
+        <CTABanner
+          title="Driving profit and productivity through AI"
+          description="Cohort-based programs for family business owners and startup founders across emerging Asia."
+          primary={{ href: "/incubator", label: "Explore the Incubator" }}
+          secondary={{ href: "/contact", label: "Talk to our team" }}
+        />
+      </section>
+
+      {/* Latest Insights */}
+      <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
+        <SectionHeader
+          eyebrow="Insights"
+          title="Articles, podcast, and media"
+        />
+        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {insights.map((i) => (
+            <Link
+              key={i.slug}
+              href="/insights"
+              className="card-lift pressable bg-warm-sand p-[31px] transition-colors"
+              style={{ borderRadius: "16px" }}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <p className="font-mono text-xs font-semibold uppercase tracking-wide text-hover">
+                {i.type} · {i.date}
+              </p>
+              <p className="mt-3 font-display text-[20px] text-ink">
+                {i.title}
+              </p>
+              <p className="mt-2 text-[15px] leading-[1.5] text-driftwood">
+                {i.excerpt}
+              </p>
+            </Link>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+
+      {/* Newsletter */}
+      <section className="reveal-section mx-auto max-w-[1200px] px-6 pb-[61px]">
+        <Newsletter />
+      </section>
     </div>
   );
 }

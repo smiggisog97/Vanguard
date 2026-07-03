@@ -1,0 +1,101 @@
+import Link from "next/link";
+import Image from "next/image";
+import type { Report } from "@/lib/data";
+
+export default function ResearchCard({
+  report,
+  variant = "grid",
+}: {
+  report: Report;
+  variant?: "grid" | "list";
+}) {
+  if (variant === "list") {
+    return (
+      <Link
+        href={`/research/${report.slug}`}
+        className="card-lift pressable group flex gap-6 bg-warm-sand p-5 transition-transform duration-[220ms] md:items-center"
+        style={{ borderRadius: "16px" }}
+      >
+        <div
+          className="relative hidden h-24 w-36 shrink-0 overflow-hidden sm:block"
+          style={{ borderRadius: "4px" }}
+        >
+          <Image
+            src={`https://picsum.photos/seed/${report.slug}-cover/320/180`}
+            alt=""
+            fill
+            className="object-cover"
+            style={{ filter: "grayscale(1)" }}
+          />
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+            <span>{report.researchType}</span>
+            <span>·</span>
+            <span>{report.country}</span>
+            <span
+              className={report.tier === "Free" ? "text-royal" : "text-gold"}
+            >
+              {report.tier === "Free" ? "Free" : `Paid · ${report.price}`}
+            </span>
+          </div>
+          <h3 className="mt-2 font-display text-[20px] leading-[1.3] text-ink group-hover:text-hover">
+            {report.title}
+          </h3>
+          <p className="mt-2 line-clamp-2 text-[14px] leading-[1.5] text-driftwood">
+            {report.abstract}
+          </p>
+          <p className="mt-2 text-[13px] text-driftwood">
+            {report.author} · {report.date}
+          </p>
+        </div>
+        <span className="hidden shrink-0 text-[13px] text-ink md:inline">
+          {report.tier === "Free" ? "Unlock" : "Purchase"} →
+        </span>
+      </Link>
+    );
+  }
+
+  return (
+    <Link
+      href={`/research/${report.slug}`}
+      className="card-lift pressable group flex flex-col justify-between overflow-hidden bg-warm-sand transition-transform duration-[220ms]"
+      style={{ borderRadius: "16px" }}
+    >
+      <div>
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
+          <Image
+            src={`https://picsum.photos/seed/${report.slug}-cover/640/360`}
+            alt=""
+            fill
+            className="object-cover"
+            style={{ filter: "grayscale(1)" }}
+            loading="lazy"
+          />
+        </div>
+        <div className="p-[31px]">
+          <div className="flex items-start justify-between gap-3">
+            <span className="min-w-0 truncate font-mono text-xs font-semibold uppercase tracking-wide text-hover">
+              {report.researchType} · {report.country}
+            </span>
+            <span
+              className={`shrink-0 whitespace-nowrap font-mono text-xs font-semibold uppercase tracking-wide ${report.tier === "Free" ? "text-royal" : "text-gold"}`}
+            >
+              {report.tier === "Free" ? "Free" : `Paid · ${report.price}`}
+            </span>
+          </div>
+          <h3 className="mt-4 font-display text-[22px] leading-[1.3] text-hover group-hover:text-hover">
+            {report.title}
+          </h3>
+          <p className="mt-3 line-clamp-3 text-[15px] leading-[1.5] text-driftwood">
+            {report.abstract}
+          </p>
+        </div>
+      </div>
+      <div className="flex items-center justify-between px-[31px] py-4 text-[13px] text-driftwood">
+        <span>{report.author}</span>
+        <span>{report.date}</span>
+      </div>
+    </Link>
+  );
+}
