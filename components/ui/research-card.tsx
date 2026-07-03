@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Report } from "@/lib/data";
 import { Chip } from "@/components/ui/funnel-cta";
+import { LucideIcon } from "@/components/ui/lucide-icon";
 
 export default function ResearchCard({
   report,
@@ -46,8 +47,9 @@ export default function ResearchCard({
             {report.author} · {report.date}
           </p>
         </div>
-        <span className="hidden shrink-0 text-[13px] text-ink md:inline">
-          {report.tier === "Free" ? "Unlock" : "Purchase"} →
+        <span className="hidden shrink-0 items-center gap-1 text-[13px] text-ink md:inline-flex">
+          {report.tier === "Free" ? "Unlock" : "Purchase"}
+          <LucideIcon name="arrow-right" size={14} />
         </span>
       </Link>
     );

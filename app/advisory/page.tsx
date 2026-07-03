@@ -42,12 +42,13 @@ export default function AdvisoryPage() {
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">Problems We Solve</h2>
         <div className="reveal-stagger mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-1">
-          {advisoryServices.map((s) => (
+          {advisoryServices.map((s, i) => (
             <FeatureCard
               key={s.title}
               icon={getAdvisoryServiceIcon(s.title)}
               title={s.title}
               description={s.description}
+              className={`bg-warm-sand p-[31px]${i === advisoryServices.length - 1 && advisoryServices.length % 2 !== 0 ? " md:col-span-2" : ""}`}
             />
           ))}
         </div>

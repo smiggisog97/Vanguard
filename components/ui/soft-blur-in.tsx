@@ -72,6 +72,9 @@ export default function SoftBlurIn({
     let rank = 0;
 
     animated.forEach((el) => {
+      // Set initial state immediately so there's no flash before the animation begins
+      Object.assign(el.style, materializeFrame(0, Y_TRAVEL_PX, BLUR_FROM_PX));
+
       const animation = el.animate(
         [
           materializeFrame(0, Y_TRAVEL_PX, BLUR_FROM_PX),
@@ -81,7 +84,7 @@ export default function SoftBlurIn({
           delay: rank * ENTER_STAGGER_MS,
           duration: ENTER_DURATION_MS,
           easing: ENTER_EASING,
-          fill: "forwards",
+          fill: "both",
         },
       );
 
@@ -92,7 +95,10 @@ export default function SoftBlurIn({
     void Promise.all(animations.map((animation) => animation.finished)).then(
       () => {
         animated.forEach((el) => {
-          Object.assign(el.style, materializeFrame(1, 0, 0));
+          // Clear inline styles — CSS/layout takes over cleanly
+          el.style.removeProperty("opacity");
+          el.style.removeProperty("transform");
+          el.style.removeProperty("filter");
         });
       },
     );

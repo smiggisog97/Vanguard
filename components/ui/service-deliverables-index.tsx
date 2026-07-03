@@ -1,52 +1,7 @@
-import { IconBox } from "@/components/ui/icon-box";
-import { BulletList } from "@/components/ui/bullet-list";
 import { getAdvisoryServiceIcon } from "@/components/ui/feature-card";
+import { IconBox } from "@/components/ui/icon-box";
 
-type BentoVariant = "tall" | "default";
-
-/** Pathao-style bento: 2 equal top · tall left · stacked right */
-const bentoLayout: { className: string; variant: BentoVariant }[] = [
-  { className: "md:col-start-1 md:row-start-1", variant: "default" },
-  { className: "md:col-start-2 md:row-start-1", variant: "default" },
-  {
-    className: "md:col-start-1 md:row-start-2 md:row-span-2",
-    variant: "tall",
-  },
-  { className: "md:col-start-2 md:row-start-2", variant: "default" },
-  { className: "md:col-start-2 md:row-start-3", variant: "default" },
-];
-
-function ServiceBentoCell({
-  title,
-  deliverables,
-  variant,
-}: {
-  title: string;
-  deliverables: string[];
-  variant: BentoVariant;
-}) {
-  const icon = getAdvisoryServiceIcon(title);
-
-  return (
-    <>
-      <IconBox icon={icon} />
-      <h3
-        className={`mt-3 font-display leading-snug text-ink ${
-          variant === "tall"
-            ? "text-[20px] md:text-[22px]"
-            : "text-[17px] md:text-[18px]"
-        }`}
-      >
-        {title}
-      </h3>
-      <BulletList
-        items={deliverables}
-        className="mt-3 space-y-1.5"
-        itemClassName="flex gap-2 text-[13px] leading-[1.4] text-driftwood md:text-[14px]"
-      />
-    </>
-  );
-}
+const numbers = ["01", "02", "03", "04", "05"];
 
 export default function ServiceDeliverablesIndex({
   services,
@@ -54,23 +9,46 @@ export default function ServiceDeliverablesIndex({
   services: { title: string; deliverables: string[] }[];
 }) {
   return (
-    <div className="reveal-stagger mt-6 grid grid-cols-1 gap-1 md:grid-cols-2 md:grid-rows-[auto_auto_auto] md:gap-1">
+    <div className="reveal-stagger mt-6 divide-y divide-fog">
       {services.map((service, index) => {
-        const layout = bentoLayout[index];
-        const variant = layout?.variant ?? "default";
-
+        const icon = getAdvisoryServiceIcon(service.title);
         return (
-          <article
+          <div
             key={service.title}
-            className={`flex flex-col bg-warm-sand p-5 ${layout?.className ?? ""}`}
-            style={{ borderRadius: "16px" }}
+            className="group grid grid-cols-1 gap-4 py-7 md:grid-cols-[72px_1fr_auto] md:items-start md:gap-8"
           >
-            <ServiceBentoCell
-              title={service.title}
-              deliverables={service.deliverables}
-              variant={variant}
-            />
-          </article>
+            {/* Number */}
+            <span className="hidden font-mono text-[13px] font-semibold text-fog md:block">
+              {numbers[index]}
+            </span>
+
+            {/* Title + icon */}
+            <div className="flex items-start gap-4">
+              <IconBox icon={icon} />
+              <div>
+                <h3 className="font-display text-[20px] leading-snug text-ink">
+                  {service.title}
+                </h3>
+                {/* Mobile number */}
+                <span className="mt-1 block font-mono text-[11px] font-semibold uppercase tracking-wide text-fog md:hidden">
+                  {numbers[index]}
+                </span>
+              </div>
+            </div>
+
+            {/* Deliverables */}
+            <ul className="flex flex-wrap gap-2 md:justify-end">
+              {service.deliverables.map((d) => (
+                <li
+                  key={d}
+                  className="inline-flex items-center border border-fog px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wide text-hover"
+                  style={{ borderRadius: "9999px" }}
+                >
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </div>
         );
       })}
     </div>

@@ -9,6 +9,7 @@ import LogoMarquee from "@/components/ui/logo-marquee";
 import SoftBlurIn from "@/components/ui/soft-blur-in";
 import { PillarIcon, type PillarIconName } from "@/components/ui/pillar-icons";
 import { FeatureCard, getAdvisoryServiceIcon } from "@/components/ui/feature-card";
+import { Chip } from "@/components/ui/funnel-cta";
 import { reports, metrics, insights, advisoryServices } from "@/lib/data";
 
 const pillars: {
@@ -193,9 +194,7 @@ export default function Home() {
               className="card-lift pressable bg-warm-sand p-[31px] transition-colors"
               style={{ borderRadius: "16px" }}
             >
-              <p className="font-mono text-xs font-semibold uppercase tracking-wide text-hover">
-                {i.type} · {i.date}
-              </p>
+              <Chip>{i.type} · {i.date}</Chip>
               <p className="mt-3 font-display text-[20px] text-ink">
                 {i.title}
               </p>

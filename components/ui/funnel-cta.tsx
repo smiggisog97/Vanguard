@@ -57,7 +57,7 @@ export function Chip({
 
 export function TagChips({ tags }: { tags: ChipItem[] }) {
   return (
-    <div className="flex flex-wrap gap-2" role="list" aria-label="Tags">
+    <div className="flex flex-wrap gap-3" role="list" aria-label="Tags">
       {tags.map((tag, index) => {
         const label = typeof tag === "string" ? tag : tag.label;
         const tone =

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Suspense, useRef, useState } from "react";
 import type { Report } from "@/lib/data";
 import { funnelLinks } from "@/lib/data";
@@ -45,7 +46,21 @@ function ReportDetailInner({
         ]}
       />
 
-      <section>
+      <div
+        className="relative mt-6 aspect-[21/9] w-full overflow-hidden"
+        style={{ borderRadius: "16px" }}
+      >
+        <Image
+          src={`https://picsum.photos/seed/${report.slug}-cover/1400/600`}
+          alt=""
+          fill
+          className="object-cover"
+          style={{ filter: "grayscale(1)" }}
+          priority
+        />
+      </div>
+
+      <section className="mt-10">
         <TagChips
           tags={[
             report.category,
