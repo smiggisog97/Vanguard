@@ -1,6 +1,7 @@
 import { insights } from "@/lib/data";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BackLink } from "@/components/ui/back-link";
 
 export function generateStaticParams() {
   return insights
@@ -52,9 +53,9 @@ export default async function InsightDetailPage({
         <Link href="/research" className="text-[15px] text-ink underline">
           Browse research
         </Link>
-        <Link href="/insights" className="text-[15px] text-ink underline">
-          ← Back to insights
-        </Link>
+        <BackLink href="/insights" underline>
+          Back to insights
+        </BackLink>
       </div>
     </article>
   );

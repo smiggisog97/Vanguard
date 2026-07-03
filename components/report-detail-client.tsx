@@ -14,6 +14,7 @@ import ResearchMetadata from "@/components/ui/research-metadata";
 import BookmarkButton, { ShareButton } from "@/components/ui/bookmark-button";
 import ReportDocument from "@/components/report-document";
 import ReportGate from "@/components/report-gate";
+import { BackLink } from "@/components/ui/back-link";
 import { useAuth } from "@/components/auth-provider";
 
 function ReportDetailInner({
@@ -44,7 +45,7 @@ function ReportDetailInner({
         ]}
       />
 
-      <section className="reveal-section">
+      <section>
         <TagChips
           tags={[
             report.category,
@@ -79,18 +80,18 @@ function ReportDetailInner({
         </div>
       </section>
 
-      <section className="reveal-section mt-8">
+      <section className="mt-8">
         <ResearchMetadata report={report} />
       </section>
 
-      <section className="reveal-section mt-10">
+      <section className="mt-10">
         <h2 className="font-display text-[24px] text-ink">Executive Summary</h2>
         <p className="mt-4 max-w-3xl text-[16px] leading-[1.65] text-driftwood">
           {report.summary}
         </p>
       </section>
 
-      <section className="reveal-section mt-10">
+      <section className="mt-10">
         <h2 className="font-display text-[24px] text-ink">Key Takeaways</h2>
         <ul className="mt-4 space-y-3">
           {report.insights.map((item) => (
@@ -105,7 +106,7 @@ function ReportDetailInner({
         </ul>
       </section>
 
-      <section className="reveal-section mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[220px_1fr_380px]">
+      <section className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[220px_1fr_380px]">
         <nav
           aria-label="Table of contents"
           className="lg:sticky lg:top-24 lg:self-start"
@@ -155,16 +156,16 @@ function ReportDetailInner({
         </aside>
       </section>
 
-      <section className="reveal-section mt-12">
+      <section className="mt-12">
         <TagChips tags={report.tags} />
       </section>
 
       {related.length > 0 ? (
-        <section className="reveal-section mt-16 pt-12">
+        <section className="mt-16 pt-12">
           <h2 className="font-display text-[24px] text-ink">
             Related Research
           </h2>
-          <div className="reveal-stagger mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="reveal-stagger mt-6 grid grid-cols-1 gap-1 md:grid-cols-3">
             {related.map((r) => (
               <ResearchCard key={r.slug} report={r} />
             ))}
@@ -172,7 +173,7 @@ function ReportDetailInner({
         </section>
       ) : null}
 
-      <section className="reveal-section mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <section className="mt-12 grid grid-cols-1 gap-1 md:grid-cols-2">
         <FunnelCta
           href={funnelLinks.researchToAdvisory.href}
           label={funnelLinks.researchToAdvisory.label}
@@ -185,10 +186,8 @@ function ReportDetailInner({
         />
       </section>
 
-      <section className="reveal-section mt-10">
-        <Link href="/research" className="text-[15px] text-ink">
-          ← Back to Research Library
-        </Link>
+      <section className="mt-10">
+        <BackLink href="/research">Back to Research Library</BackLink>
       </section>
     </div>
   );

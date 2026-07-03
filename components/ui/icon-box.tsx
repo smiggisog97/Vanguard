@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { LucideIcon } from "@/components/ui/lucide-icon";
 
 export function IconBox({
   icon,
@@ -17,7 +17,7 @@ export function IconBox({
       style={{ borderRadius: "12px" }}
       aria-hidden
     >
-      <Icon icon={icon} width={22} height={22} />
+      <LucideIcon name={icon} size={22} />
     </div>
   );
 }

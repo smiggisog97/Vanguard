@@ -16,7 +16,7 @@ export default function BookmarksPage() {
           No bookmarks yet. Bookmark reports from any research detail page.
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
           {bookmarked.map((r) => (
             <ResearchCard key={r.slug} report={r} />
           ))}

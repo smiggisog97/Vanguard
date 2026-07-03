@@ -7,18 +7,28 @@ export default function RevealOnScroll() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const sections = document.querySelectorAll(
-      ".reveal-section:not(.is-revealed)",
-    );
-
     const revealAll = () => {
-      sections.forEach((el) => el.classList.add("is-revealed"));
+      document
+        .querySelectorAll(".reveal-section:not(.is-revealed)")
+        .forEach((el) => el.classList.add("is-revealed"));
     };
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       revealAll();
       return;
     }
+
+    const pending = document.querySelectorAll(
+      ".reveal-section:not(.is-revealed)",
+    );
+
+    pending.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inView) {
+        el.classList.add("is-revealed");
+      }
+    });
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -29,12 +39,21 @@ export default function RevealOnScroll() {
           }
         });
       },
-      { threshold: 0.06, rootMargin: "0px 0px -32px 0px" },
+      { threshold: 0.01, rootMargin: "0px" },
     );
 
-    sections.forEach((el) => observer.observe(el));
+    pending.forEach((el) => {
+      if (!el.classList.contains("is-revealed")) {
+        observer.observe(el);
+      }
+    });
 
-    return () => observer.disconnect();
+    const fallback = window.setTimeout(revealAll, 150);
+
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, [pathname]);
 
   return null;

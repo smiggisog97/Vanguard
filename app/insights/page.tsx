@@ -47,7 +47,7 @@ export default function InsightsPage() {
       </section>
 
       <section className="reveal-section mt-10">
-        <div className="reveal-stagger grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="reveal-stagger grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((item) =>
             item.type === "Podcast" ? (
               <PodcastCard

@@ -4,10 +4,10 @@ type PillarIconName = "research" | "bespoke" | "advisory" | "incubator";
 
 /** Lucide icons via Iconify — https://icon-sets.iconify.design/lucide/ */
 const icons: Record<PillarIconName, string> = {
-  research: "lucide:chart-no-axes-combined",
-  bespoke: "lucide:compass",
-  advisory: "lucide:briefcase",
-  incubator: "lucide:graduation-cap",
+  research: "chart-no-axes-combined",
+  bespoke: "compass",
+  advisory: "briefcase",
+  incubator: "graduation-cap",
 };
 
 export function PillarIcon({ name }: { name: PillarIconName }) {

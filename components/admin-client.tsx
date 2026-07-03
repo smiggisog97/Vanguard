@@ -66,7 +66,7 @@ export function AdminShell({
 export default function AdminDashboard() {
   return (
     <AdminShell title="Dashboard">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-4">
         {[
           { label: "Published Reports", value: reports.length },
           { label: "Programs", value: incubatorPrograms.length },

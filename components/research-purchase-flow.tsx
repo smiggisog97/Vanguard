@@ -9,6 +9,8 @@ import { calculateTotal } from "@/lib/payment";
 import type { PaymentGateway } from "@/lib/types";
 import { FULL_PAGE_COUNT } from "@/lib/report-content";
 import { useAuth } from "@/components/auth-provider";
+import { LucideIcon } from "@/components/ui/lucide-icon";
+import { BackButton } from "@/components/ui/back-link";
 
 type PurchaseStep = "review" | "details" | "payment" | "processing" | "success";
 
@@ -428,14 +430,11 @@ export default function ResearchPurchaseFlow({
                 <p className="mt-3 text-[13px] text-royal">{error}</p>
               ) : null}
               <div className="mt-6 flex gap-3">
-                <button
-                  type="button"
+                <BackButton
                   onClick={() => setStep("review")}
                   className="flex-1 px-6 py-3 text-[15px] text-ink"
                   style={{ borderRadius: "9999px" }}
-                >
-                  Back
-                </button>
+                />
                 <button
                   type="button"
                   onClick={() => {
@@ -643,14 +642,11 @@ export default function ResearchPurchaseFlow({
 
               {/* CTA row */}
               <div className="mt-5 flex gap-3">
-                <button
-                  type="button"
+                <BackButton
                   onClick={() => setStep("details")}
                   className="px-5 py-3 text-[15px] text-ink"
                   style={{ borderRadius: "9999px" }}
-                >
-                  Back
-                </button>
+                />
                 <button
                   type="button"
                   onClick={() => {
@@ -703,15 +699,11 @@ export default function ResearchPurchaseFlow({
                 className="purchase-success__card mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-ink"
                 aria-hidden
               >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M6 12.5L10 16.5L18 8.5"
-                    stroke="#f7f7f4"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <LucideIcon
+                  name="check"
+                  size={28}
+                  style={{ color: "#f7f7f4" }}
+                />
               </div>
               <p className="mt-5 font-mono text-xs font-semibold uppercase tracking-wide text-moss">
                 Purchase complete
@@ -745,29 +737,11 @@ export default function ResearchPurchaseFlow({
                       key={item}
                       className="flex items-start gap-2 text-[14px] text-ink"
                     >
-                      <svg
-                        className="mt-0.5 shrink-0"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                        aria-hidden
-                      >
-                        <circle
-                          cx="7"
-                          cy="7"
-                          r="7"
-                          fill="currentColor"
-                          className="text-moss"
-                        />
-                        <path
-                          d="M4 7.2L6 9.2L10 5.2"
-                          stroke="white"
-                          strokeWidth="1.4"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <LucideIcon
+                        name="circle-check"
+                        size={14}
+                        className="mt-0.5 shrink-0 text-moss"
+                      />
                       {item}
                     </li>
                   ))}

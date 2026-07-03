@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { BackLink } from "@/components/ui/back-link";
 
 export default function ForgotPasswordPage() {
   const [sent, setSent] = useState(false);
@@ -45,9 +46,9 @@ export default function ForgotPasswordPage() {
         </form>
       )}
       <p className="mt-4 text-[14px]">
-        <Link href="/login" className="text-ink underline">
+        <BackLink href="/login" underline className="text-[14px] text-ink">
           Back to login
-        </Link>
+        </BackLink>
       </p>
     </div>
   );

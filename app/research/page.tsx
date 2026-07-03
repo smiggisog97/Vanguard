@@ -27,7 +27,7 @@ export default function ResearchPage() {
           <ResearchLibrary reports={reports} />
         </Suspense>
       </section>
-      <section className="reveal-section mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <section className="reveal-section mt-16 grid grid-cols-1 gap-1 md:grid-cols-2">
         <FunnelCta
           href={funnelLinks.researchToAdvisory.href}
           label={funnelLinks.researchToAdvisory.label}

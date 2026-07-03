@@ -17,7 +17,7 @@ export default function ReportDocument({ report, unlocked }: Props) {
 
   const content = (
     <>
-      <div className="flex flex-wrap items-end justify-between gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-1">
         <h2 className="font-display text-[24px] text-ink">
           {unlocked ? "Full Report" : "Preview"}
         </h2>
@@ -32,7 +32,7 @@ export default function ReportDocument({ report, unlocked }: Props) {
         )}
       </div>
 
-      <div className="reveal-stagger mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="reveal-stagger mt-4 grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-4">
         {Array.from({ length: pageCount }, (_, i) => i + 1).map((page) => (
           <div
             key={page}

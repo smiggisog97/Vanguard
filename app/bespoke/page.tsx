@@ -3,6 +3,8 @@ import Timeline from "@/components/ui/timeline";
 import InquiryForm from "@/components/inquiry-form";
 import FunnelCta from "@/components/ui/funnel-cta";
 import ResearchCard from "@/components/ui/research-card";
+import { FeatureCard } from "@/components/ui/feature-card";
+import CoveragePanel from "@/components/ui/coverage-panel";
 import { bespokeProcess, reports, funnelLinks } from "@/lib/data";
 
 export const metadata = { title: "Bespoke Research | Vanguard" };
@@ -15,10 +17,22 @@ const audiences = [
 ];
 
 const characteristics = [
-  "Confidential deliverables tailored to your decision",
-  "Primary and secondary research across emerging Asia",
-  "Fixed-fee proposals with defined timelines",
-  "Live presentation to your board or investment committee",
+  {
+    title: "Confidential deliverables tailored to your decision",
+    icon: "shield-check",
+  },
+  {
+    title: "Primary and secondary research across emerging Asia",
+    icon: "search",
+  },
+  {
+    title: "Fixed-fee proposals with defined timelines",
+    icon: "file-text",
+  },
+  {
+    title: "Live presentation to your board or investment committee",
+    icon: "presentation",
+  },
 ];
 
 export default function BespokePage() {
@@ -34,17 +48,18 @@ export default function BespokePage() {
 
       <section className="reveal-section mt-10">
         <h2 className="font-display text-[24px] text-ink">Who we work with</h2>
-        <div className="reveal-stagger mt-4 flex flex-wrap gap-3">
-          {audiences.map((a) => (
-            <span
-              key={a}
-              className="bg-warm-sand px-4 py-2 text-[14px] text-ink"
-              style={{ borderRadius: "16px" }}
-            >
-              {a}
-            </span>
-          ))}
-        </div>
+        <CoveragePanel
+          eyebrow="Client profile"
+          title="Family offices, corporates, and institutional capital across emerging Asia"
+          description="Bespoke engagements are scoped to the specific decision your investment or policy mandate depends on."
+          items={audiences}
+          chipLayouts={[
+            { top: "10%", left: "6%", rotate: -2.5 },
+            { top: "8%", left: "50%", rotate: 3 },
+            { top: "52%", left: "12%", rotate: -2 },
+            { top: "48%", left: "54%", rotate: 1.5 },
+          ]}
+        />
       </section>
 
       <section className="reveal-section mt-12">
@@ -52,32 +67,46 @@ export default function BespokePage() {
           Engagement Process
         </h2>
         <div className="mt-6">
-          <Timeline steps={bespokeProcess} />
+          <Timeline
+            steps={bespokeProcess}
+            icons={[
+              "message-circle",
+              "file-search",
+              "file-signature",
+              "microscope",
+              "eye",
+              "package",
+              "users",
+            ]}
+          />
         </div>
       </section>
 
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">What to expect</h2>
-        <ul className="mt-4 space-y-2">
+        <div className="reveal-stagger mt-6 grid grid-cols-1 gap-1 md:grid-cols-3">
           {characteristics.map((c) => (
-            <li key={c} className="flex gap-3 text-[15px] text-ink">
-              <span className="text-royal">·</span>
-              {c}
-            </li>
+            <FeatureCard
+              key={c.title}
+              icon={c.icon}
+              title={c.title}
+              titleClassName="font-display text-[16px] leading-[1.4] text-ink"
+              descriptionClassName="hidden"
+            />
           ))}
-        </ul>
+        </div>
       </section>
 
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">Related Research</h2>
-        <div className="reveal-stagger mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="reveal-stagger mt-6 grid grid-cols-1 gap-1 md:grid-cols-3">
           {reports.slice(0, 3).map((r) => (
             <ResearchCard key={r.slug} report={r} />
           ))}
         </div>
       </section>
 
-      <section className="reveal-section mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <section className="reveal-section mt-12 grid grid-cols-1 gap-1 md:grid-cols-2">
         <FunnelCta
           href={funnelLinks.advisoryToResearch.href}
           label="Browse published research"

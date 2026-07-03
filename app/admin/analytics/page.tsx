@@ -36,7 +36,7 @@ export default function AdminAnalyticsPage() {
           </div>
         ))}
       </div>
-      <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-1 md:grid-cols-2">
         <div className="bg-warm-sand p-6" style={{ borderRadius: "16px" }}>
           <p className="font-mono text-xs uppercase text-driftwood">
             Top Reports

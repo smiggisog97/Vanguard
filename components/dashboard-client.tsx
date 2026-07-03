@@ -80,7 +80,7 @@ export function DashboardOverview() {
     <DashboardShell
       title={`Welcome${session?.firstName ? `, ${session.firstName}` : ""}`}
     >
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-1 sm:grid-cols-3">
         {[
           { label: "Purchased", value: access.purchased.length },
           {
@@ -109,7 +109,7 @@ export function DashboardOverview() {
           <h2 className="font-display text-[20px] text-ink">
             Recent purchases
           </h2>
-          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mt-4 grid grid-cols-1 gap-1 md:grid-cols-2">
             {purchasedReports.slice(0, 2).map((r) => (
               <ResearchCard key={r.slug} report={r} />
             ))}
@@ -140,7 +140,7 @@ export function DashboardOverview() {
       {bookmarked.length > 0 ? (
         <section className="mt-10">
           <h2 className="font-display text-[20px] text-ink">Bookmarked</h2>
-          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mt-4 grid grid-cols-1 gap-1 md:grid-cols-2">
             {bookmarked.slice(0, 2).map((r) => (
               <ResearchCard key={r.slug} report={r} />
             ))}

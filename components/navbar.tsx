@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { searchAll, getSearchSuggestions } from "@/lib/search";
 import { useAuth } from "@/components/auth-provider";
+import { LucideIcon } from "@/components/ui/lucide-icon";
 
 const primaryLinks = [
   { href: "/research", label: "Research" },
@@ -17,16 +18,19 @@ const serviceLinks = [
     href: "/advisory",
     label: "Corporate Advisory",
     description: "Capital strategy and governance",
+    icon: "briefcase",
   },
   {
     href: "/bespoke",
     label: "Bespoke Research",
     description: "Custom confidential research",
+    icon: "compass",
   },
   {
     href: "/incubator",
     label: "Advanced Incubator",
     description: "Executive education programs",
+    icon: "graduation-cap",
   },
 ];
 
@@ -51,37 +55,12 @@ function HamburgerIcon({ open }: { open: boolean }) {
 
 function ChevronIcon() {
   return (
-    <svg
-      width="10"
-      height="10"
-      viewBox="0 0 10 10"
-      fill="none"
-      aria-hidden
-      className="opacity-60"
-    >
-      <path
-        d="M2 3.5L5 6.5L8 3.5"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <LucideIcon name="chevron-down" size={14} className="opacity-60" />
   );
 }
 
 function SearchIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.2" />
-      <path
-        d="M10.5 10.5L13 13"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
+  return <LucideIcon name="search" size={16} />;
 }
 
 function NavDropdown({
@@ -93,6 +72,7 @@ function NavDropdown({
     href?: string;
     label: string;
     description?: string;
+    icon?: string;
     onClick?: () => void;
   }[];
 }) {
@@ -130,7 +110,7 @@ function NavDropdown({
         </span>
       </button>
       {open && (
-        <div className="absolute left-0 top-full z-50 min-w-[240px] pt-2">
+        <div className="absolute left-0 top-full z-50 min-w-[280px] pt-2">
           <div
             className="bg-parchment py-2 shadow-elevated"
             style={{ borderRadius: "16px" }}
@@ -144,10 +124,21 @@ function NavDropdown({
                     item.onClick!();
                     setOpen(false);
                   }}
-                  className="block w-full px-4 py-2.5 text-left transition-colors hover:bg-warm-sand"
+                  className="flex w-full items-start gap-3 px-4 py-2.5 text-left transition-colors hover:bg-warm-sand"
                 >
-                  <span className="block text-[14px] text-ink">
-                    {item.label}
+                  {item.icon ? (
+                    <span
+                      className="flex h-9 w-9 shrink-0 items-center justify-center border border-fog text-ink"
+                      style={{ borderRadius: "10px" }}
+                      aria-hidden
+                    >
+                      <LucideIcon name={item.icon} size={18} />
+                    </span>
+                  ) : null}
+                  <span className="min-w-0">
+                    <span className="block text-[14px] text-ink">
+                      {item.label}
+                    </span>
                   </span>
                 </button>
               ) : item.href ? (
@@ -155,16 +146,27 @@ function NavDropdown({
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block px-4 py-2.5 transition-colors hover:bg-warm-sand"
+                  className="flex items-start gap-3 px-4 py-2.5 transition-colors hover:bg-warm-sand"
                 >
-                  <span className="block text-[14px] text-ink">
-                    {item.label}
-                  </span>
-                  {item.description ? (
-                    <span className="mt-0.5 block text-[12px] text-driftwood">
-                      {item.description}
+                  {item.icon ? (
+                    <span
+                      className="flex h-9 w-9 shrink-0 items-center justify-center border border-fog text-ink"
+                      style={{ borderRadius: "10px" }}
+                      aria-hidden
+                    >
+                      <LucideIcon name={item.icon} size={18} />
                     </span>
                   ) : null}
+                  <span className="min-w-0">
+                    <span className="block text-[14px] text-ink">
+                      {item.label}
+                    </span>
+                    {item.description ? (
+                      <span className="mt-0.5 block text-[12px] text-driftwood">
+                        {item.description}
+                      </span>
+                    ) : null}
+                  </span>
                 </Link>
               ) : null,
             )}

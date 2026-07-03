@@ -76,7 +76,7 @@ export default function AboutPage() {
 
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">Speaking & Media</h2>
-        <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="mt-4 grid grid-cols-1 gap-1 md:grid-cols-2">
           <div>
             <p className="font-mono text-xs uppercase text-driftwood">
               Speaking
@@ -128,7 +128,7 @@ export default function AboutPage() {
       </section>
 
       <section className="reveal-section mt-12">
-        <div className="reveal-stagger grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="reveal-stagger grid grid-cols-1 gap-1 md:grid-cols-3">
           {metrics.map((m) => (
             <MetricCard key={m.label} value={m.value} label={m.label} />
           ))}

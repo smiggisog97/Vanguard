@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ResearchCard from "@/components/ui/research-card";
+import { LucideIcon } from "@/components/ui/lucide-icon";
 import type { Report } from "@/lib/data";
 
 const categories = ["All", "Sector", "Macro", "Capital Markets"] as const;
@@ -204,7 +205,7 @@ export default function ResearchLibrary({ reports }: { reports: Report[] }) {
       </aside>
 
       <div>
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-1">
           <p className="text-[14px] text-driftwood">
             {filtered.length} reports
           </p>
@@ -228,16 +229,18 @@ export default function ResearchLibrary({ reports }: { reports: Report[] }) {
                 type="button"
                 onClick={() => setView("grid")}
                 aria-pressed={view === "grid"}
-                className={`px-3 py-2 text-[13px] ${view === "grid" ? "bg-ink text-parchment" : "bg-parchment text-ink"}`}
+                className={`inline-flex items-center gap-1.5 px-3 py-2 text-[13px] ${view === "grid" ? "bg-ink text-parchment" : "bg-parchment text-ink"}`}
               >
+                <LucideIcon name="layout-grid" size={14} />
                 Grid
               </button>
               <button
                 type="button"
                 onClick={() => setView("list")}
                 aria-pressed={view === "list"}
-                className={`px-3 py-2 text-[13px] ${view === "list" ? "bg-ink text-parchment" : "bg-parchment text-ink"}`}
+                className={`inline-flex items-center gap-1.5 px-3 py-2 text-[13px] ${view === "list" ? "bg-ink text-parchment" : "bg-parchment text-ink"}`}
               >
+                <LucideIcon name="list" size={14} />
                 List
               </button>
             </div>
@@ -258,7 +261,7 @@ export default function ResearchLibrary({ reports }: { reports: Report[] }) {
           </div>
         ) : (
           <div
-            className={`reveal-stagger mt-4 ${view === "grid" ? "grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3" : "flex flex-col gap-4"}`}
+            className={`reveal-stagger mt-4 ${view === "grid" ? "grid grid-cols-1 gap-1 md:grid-cols-2 xl:grid-cols-3" : "flex flex-col gap-1"}`}
           >
             {filtered.map((report) => (
               <ResearchCard key={report.slug} report={report} variant={view} />

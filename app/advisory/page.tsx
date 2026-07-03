@@ -1,5 +1,11 @@
 import Link from "next/link";
 import SectionHeader from "@/components/ui/section-header";
+import {
+  FeatureCard,
+  getAdvisoryServiceIcon,
+} from "@/components/ui/feature-card";
+import ServiceDeliverablesIndex from "@/components/ui/service-deliverables-index";
+import IndustryCoverage from "@/components/ui/industry-coverage";
 import Timeline from "@/components/ui/timeline";
 import InquiryForm from "@/components/inquiry-form";
 import Button from "@/components/ui/button";
@@ -35,18 +41,14 @@ export default function AdvisoryPage() {
 
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">Problems We Solve</h2>
-        <div className="reveal-stagger mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="reveal-stagger mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-1">
           {advisoryServices.map((s) => (
-            <div
+            <FeatureCard
               key={s.title}
-              className="bg-warm-sand p-[31px]"
-              style={{ borderRadius: "16px" }}
-            >
-              <p className="font-display text-[20px] text-ink">{s.title}</p>
-              <p className="mt-2 text-[15px] leading-[1.5] text-driftwood">
-                {s.description}
-              </p>
-            </div>
+              icon={getAdvisoryServiceIcon(s.title)}
+              title={s.title}
+              description={s.description}
+            />
           ))}
         </div>
       </section>
@@ -55,43 +57,12 @@ export default function AdvisoryPage() {
         <h2 className="font-display text-[24px] text-ink">
           Services & Deliverables
         </h2>
-        <div className="reveal-stagger mt-6 space-y-4">
-          {advisoryServices.map((s) => (
-            <div
-              key={s.title}
-              className="bg-warm-sand p-6"
-              style={{ borderRadius: "16px" }}
-            >
-              <p className="font-display text-[18px] text-ink">{s.title}</p>
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {s.deliverables.map((d) => (
-                  <li
-                    key={d}
-                    className="bg-parchment px-3 py-1 text-[13px] text-driftwood"
-                    style={{ borderRadius: "9999px" }}
-                  >
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <ServiceDeliverablesIndex services={advisoryServices} />
       </section>
 
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">Industries</h2>
-        <div className="reveal-stagger mt-4 flex flex-wrap gap-3">
-          {advisoryIndustries.map((i) => (
-            <span
-              key={i}
-              className="bg-warm-sand px-4 py-2 text-[14px] text-ink"
-              style={{ borderRadius: "16px" }}
-            >
-              {i}
-            </span>
-          ))}
-        </div>
+        <IndustryCoverage industries={advisoryIndustries} />
       </section>
 
       <section className="reveal-section mt-12">
@@ -107,6 +78,13 @@ export default function AdvisoryPage() {
               step: p.step,
               description: `${p.description} (${p.timeline})`,
             }))}
+            icons={[
+              "scan-search",
+              "pen-line",
+              "target",
+              "play",
+              "refresh-cw",
+            ]}
           />
         </div>
       </section>
@@ -125,7 +103,7 @@ export default function AdvisoryPage() {
 
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">Related Research</h2>
-        <div className="reveal-stagger mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="reveal-stagger mt-6 grid grid-cols-1 gap-1 md:grid-cols-3">
           {relatedResearch.map((r) => (
             <ResearchCard key={r.slug} report={r} />
           ))}

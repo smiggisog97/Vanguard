@@ -8,7 +8,7 @@ import Newsletter from "@/components/ui/newsletter";
 import LogoMarquee from "@/components/ui/logo-marquee";
 import SoftBlurIn from "@/components/ui/soft-blur-in";
 import { PillarIcon, type PillarIconName } from "@/components/ui/pillar-icons";
-import { AdvisoryServiceIcon } from "@/components/ui/advisory-service-icons";
+import { FeatureCard, getAdvisoryServiceIcon } from "@/components/ui/feature-card";
 import { reports, metrics, insights, advisoryServices } from "@/lib/data";
 
 const pillars: {
@@ -93,7 +93,7 @@ export default function Home() {
             View all research →
           </Link>
         </div>
-        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-1 md:grid-cols-3">
           {featured.map((report) => (
             <ResearchCard key={report.slug} report={report} />
           ))}
@@ -107,7 +107,7 @@ export default function Home() {
           title="From research discovery to advisory mandate"
           description="Every product line moves a visitor deeper into a single funnel, not four disconnected services."
         />
-        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-1 md:grid-cols-2">
           {pillars.map((p) => (
             <Link
               key={p.title}
@@ -133,7 +133,7 @@ export default function Home() {
           eyebrow="Why Vanguard"
           title="Built on research credibility, led by practitioners"
         />
-        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-1 md:grid-cols-3">
           {metrics.map((m) => (
             <MetricCard key={m.label} value={m.value} label={m.label} />
           ))}
@@ -148,19 +148,16 @@ export default function Home() {
             title="Capital strategy and governance for corporates and family businesses"
             description="Five service lines that move clients from research credibility to institutional capital readiness."
           />
-          <div className="reveal-stagger grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="reveal-stagger grid grid-cols-1 gap-1 md:grid-cols-2">
             {advisoryServices.slice(0, 4).map((s) => (
-              <div
+              <FeatureCard
                 key={s.title}
-                className="bg-warm-sand p-5"
-                style={{ borderRadius: "16px" }}
-              >
-                <AdvisoryServiceIcon title={s.title} />
-                <p className="mt-3 font-display text-[18px] text-ink">{s.title}</p>
-                <p className="mt-2 text-[14px] leading-[1.4] text-driftwood">
-                  {s.description}
-                </p>
-              </div>
+                icon={getAdvisoryServiceIcon(s.title)}
+                title={s.title}
+                description={s.description}
+                titleClassName="font-display text-[18px] text-ink"
+                descriptionClassName="mt-2 text-[14px] leading-[1.4] text-driftwood"
+              />
             ))}
           </div>
         </div>
@@ -174,6 +171,7 @@ export default function Home() {
       {/* AI Programs */}
       <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
         <CTABanner
+          eyebrow="Advanced Incubator"
           title="Driving profit and productivity through AI"
           description="Cohort-based programs for family business owners and startup founders across emerging Asia."
           primary={{ href: "/incubator", label: "Explore the Incubator" }}
@@ -187,7 +185,7 @@ export default function Home() {
           eyebrow="Insights"
           title="Articles, podcast, and media"
         />
-        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="reveal-stagger mt-10 grid grid-cols-1 gap-1 md:grid-cols-3">
           {insights.map((i) => (
             <Link
               key={i.slug}

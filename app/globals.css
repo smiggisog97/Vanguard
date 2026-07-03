@@ -19,6 +19,7 @@
   --color-moss: #34785c;
 
   --section-gap: 64px;
+  --card-gap: 4px;
   --card-padding: 24px;
   --card-radius: 16px;
   --page-max-width: 1200px;
@@ -93,6 +94,61 @@ a:not(.btn-action):hover,
   box-shadow: var(--shadow-inset);
 }
 
+.cta-banner {
+  animation: cta-banner-shadow 6s var(--ease-in-out) infinite;
+}
+
+.cta-banner__primary {
+  animation: cta-banner-btn-primary 4.5s var(--ease-in-out) infinite;
+}
+
+.cta-banner__secondary {
+  animation: cta-banner-btn-secondary 4.5s var(--ease-in-out) infinite;
+  animation-delay: 0.75s;
+}
+
+@keyframes cta-banner-shadow {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 24px rgba(20, 20, 20, 0.1),
+      0 2px 6px rgba(20, 20, 20, 0.05);
+  }
+
+  50% {
+    box-shadow:
+      0 14px 36px rgba(20, 20, 20, 0.15),
+      0 4px 12px rgba(20, 20, 20, 0.08),
+      0 0 40px rgba(245, 78, 0, 0.07);
+  }
+}
+
+@keyframes cta-banner-btn-primary {
+  0%,
+  100% {
+    box-shadow: 0 2px 10px rgba(247, 247, 244, 0.08);
+  }
+
+  50% {
+    box-shadow:
+      0 6px 18px rgba(247, 247, 244, 0.2),
+      0 0 24px rgba(247, 247, 244, 0.08);
+  }
+}
+
+@keyframes cta-banner-btn-secondary {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.18),
+      0 0 20px rgba(255, 255, 255, 0.06);
+  }
+}
+
 /* Text animation: soft-blur-in */
 .text-animation-title {
   perspective: 900px;
@@ -107,13 +163,8 @@ a:not(.btn-action):hover,
   will-change: transform, opacity, filter;
 }
 
-.text-animation-unit[data-animate="true"] {
-  opacity: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .text-animation-unit[data-animate="true"] {
-    opacity: 1;
     transform: none;
     filter: none;
   }
@@ -388,6 +439,15 @@ a:not(.btn-action):hover,
 
   .card-lift:hover {
     transform: none;
+  }
+
+  .cta-banner,
+  .cta-banner__primary,
+  .cta-banner__secondary {
+    animation: none;
+    box-shadow:
+      0 8px 24px rgba(20, 20, 20, 0.1),
+      0 2px 6px rgba(20, 20, 20, 0.05);
   }
 
   .reveal-section,

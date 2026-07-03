@@ -3,6 +3,7 @@ import SectionHeader from "@/components/ui/section-header";
 import InquiryForm from "@/components/inquiry-form";
 import Button from "@/components/ui/button";
 import FunnelCta from "@/components/ui/funnel-cta";
+import { IncubatorProgramIcon } from "@/components/ui/incubator-program-icons";
 import { incubatorPrograms, funnelLinks } from "@/lib/data";
 
 export const metadata = { title: "Advanced Incubator | Vanguard" };
@@ -41,14 +42,17 @@ export default function IncubatorPage() {
               className="bg-warm-sand p-[31px]"
               style={{ borderRadius: "16px" }}
             >
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <p className="font-mono text-xs font-semibold uppercase tracking-wide text-royal">
-                    {p.audience}
-                  </p>
-                  <h2 className="mt-2 font-display text-[30px] text-ink">
-                    {p.title}
-                  </h2>
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="flex min-w-0 items-start gap-4">
+                  <IncubatorProgramIcon slug={p.slug} />
+                  <div>
+                    <p className="font-mono text-xs font-semibold uppercase tracking-wide text-royal">
+                      {p.audience}
+                    </p>
+                    <h2 className="mt-2 font-display text-[30px] text-ink">
+                      {p.title}
+                    </h2>
+                  </div>
                 </div>
                 <span
                   className={`font-mono text-xs font-semibold uppercase tracking-wide ${p.cohortStatus === "Open" ? "text-moss" : p.cohortStatus === "Waitlist" ? "text-gold" : "text-driftwood"}`}

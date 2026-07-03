@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Report } from "@/lib/data";
+import { LucideIcon } from "@/components/ui/lucide-icon";
 
 type Props = {
   report: Report;
@@ -46,15 +47,11 @@ export default function PurchaseSuccess({
           className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-ink"
           aria-hidden
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M6 12.5L10 16.5L18 8.5"
-              stroke="#f7f7f4"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <LucideIcon
+            name="check"
+            size={24}
+            style={{ color: "#f7f7f4" }}
+          />
         </div>
         <p className="mt-6 text-center font-mono text-xs font-semibold uppercase tracking-wide text-royal">
           {mode === "purchase" ? "Purchase complete" : "Access unlocked"}
