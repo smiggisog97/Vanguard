@@ -349,7 +349,7 @@ export default function Navbar() {
               <div className="my-4 h-px shrink-0 bg-ash-border" aria-hidden />
 
               <div className="space-y-1">
-                <p className="pb-1 font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                <p className="pb-1 font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                   Services
                 </p>
                 {serviceLinks.map((link) => (

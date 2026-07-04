@@ -20,7 +20,7 @@ function StatCell({
 }) {
   return (
     <div className="flex min-w-0 flex-col gap-1 px-5 first:pl-0 last:pr-0">
-      <span className="font-mono text-[9px] font-semibold uppercase tracking-wider text-driftwood">
+      <span className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
         {label}
       </span>
       {chip ?? (

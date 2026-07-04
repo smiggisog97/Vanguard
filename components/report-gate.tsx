@@ -176,7 +176,7 @@ export default function ReportGate({
             >
               Purchase report · ${totals.total.toFixed(2)}
             </button>
-            <p className="mt-3 text-center font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+            <p className="mt-3 text-center font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
               Secure checkout
             </p>
           </>

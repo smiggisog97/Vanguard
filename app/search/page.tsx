@@ -39,7 +39,7 @@ function SearchResults() {
                 className="block bg-warm-sand p-5 transition-colors"
                 style={{ borderRadius: "16px" }}
               >
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                   {r.type} · {r.meta}
                 </p>
                 <p className="mt-2 font-display text-[20px] text-ink">

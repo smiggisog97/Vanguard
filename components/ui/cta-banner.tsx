@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CtaBannerVideo from "@/components/ui/cta-banner-video";
 
 export default function CTABanner({
   eyebrow,
@@ -6,31 +7,26 @@ export default function CTABanner({
   description,
   primary,
   secondary,
+  videoSrc,
 }: {
   eyebrow?: string;
   title: string;
   description: string;
   primary: { href: string; label: string };
   secondary?: { href: string; label: string };
+  videoSrc?: string;
 }) {
   return (
     <div
       className="cta-banner relative overflow-hidden bg-ink px-[31px] py-10 md:px-[48px] md:py-12"
       style={{ borderRadius: "12px" }}
     >
-      <div
-        className="cta-banner__shader pointer-events-none absolute inset-0"
-        aria-hidden
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 70% at 100% 0%, rgba(245, 78, 0, 0.14), transparent 55%)",
-        }}
-      />
+      {videoSrc ? <CtaBannerVideo src={videoSrc} /> : null}
 
-      <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-12">
+      <div className="relative z-[1] flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-12">
         <div className="max-w-2xl text-left">
           {eyebrow ? (
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-royal">
+            <p className="font-mono text-xs font-semibold uppercase tracking-wide text-royal">
               {eyebrow}
             </p>
           ) : null}

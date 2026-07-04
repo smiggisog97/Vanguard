@@ -145,7 +145,7 @@ export default function Home() {
       <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
           <div className="max-w-2xl">
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-royal">
+            <p className="font-mono text-xs font-semibold uppercase tracking-wide text-royal">
               Corporate Advisory
             </p>
             <h2 className="mt-3 font-display text-[36px] leading-[1.1] text-ink md:text-[44px]">
@@ -183,6 +183,7 @@ export default function Home() {
           description="Cohort-based programs for family business owners and startup founders across emerging Asia."
           primary={{ href: "/incubator", label: "Explore the Incubator" }}
           secondary={{ href: "/contact", label: "Talk to our team" }}
+          videoSrc="https://stream.mux.com/tLkHO1qZoaaQOUeVWo8hEBeGQfySP02EPS02BmnNFyXys.m3u8"
         />
       </section>
 

@@ -349,7 +349,7 @@ export default function ResearchPurchaseFlow({
                   />
                 </div>
                 <div className="p-5">
-                  <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                  <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                     {report.researchType} · {report.country}
                   </p>
                   <p className="mt-1.5 font-display text-[19px] leading-[1.3] text-ink">
@@ -492,7 +492,7 @@ export default function ResearchPurchaseFlow({
                 >
                   <div className="space-y-2.5">
                     <div>
-                      <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                      <label className="mb-1 block font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                         Card number
                       </label>
                       <input
@@ -506,7 +506,7 @@ export default function ResearchPurchaseFlow({
                     </div>
                     <div className="grid grid-cols-2 gap-2.5">
                       <div>
-                        <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                        <label className="mb-1 block font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                           Expiry
                         </label>
                         <input
@@ -519,7 +519,7 @@ export default function ResearchPurchaseFlow({
                         />
                       </div>
                       <div>
-                        <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                        <label className="mb-1 block font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                           CVC
                         </label>
                         <input
@@ -537,7 +537,7 @@ export default function ResearchPurchaseFlow({
                       </div>
                     </div>
                     <div>
-                      <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                      <label className="mb-1 block font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                         Name on card
                       </label>
                       <input
@@ -562,7 +562,7 @@ export default function ResearchPurchaseFlow({
                 >
                   <div className="space-y-3">
                     <div className="rounded-lg bg-parchment p-3.5">
-                      <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                      <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                         How to pay
                       </p>
                       <ol className="mt-2 space-y-1 text-[13px] text-ink">
@@ -581,7 +581,7 @@ export default function ResearchPurchaseFlow({
                       </ol>
                     </div>
                     <div>
-                      <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                      <label className="mb-1 block font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                         bKash TrxID
                       </label>
                       <input
@@ -605,7 +605,7 @@ export default function ResearchPurchaseFlow({
                 >
                   <div className="space-y-3">
                     <div className="rounded-lg bg-parchment p-3.5">
-                      <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                      <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                         How to pay
                       </p>
                       <ol className="mt-2 space-y-1 text-[13px] text-ink">
@@ -624,7 +624,7 @@ export default function ResearchPurchaseFlow({
                       </ol>
                     </div>
                     <div>
-                      <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                      <label className="mb-1 block font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                         Nagad TrxID
                       </label>
                       <input
@@ -668,7 +668,7 @@ export default function ResearchPurchaseFlow({
                     : `Confirm ${bdtTotal} payment`}
                 </button>
               </div>
-              <p className="mt-3 text-center font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+              <p className="mt-3 text-center font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                 Encrypted · Instant access on confirmation
               </p>
             </>
@@ -726,7 +726,7 @@ export default function ResearchPurchaseFlow({
                 className="mt-5 bg-warm-sand p-4 text-left"
                 style={{ borderRadius: "10px" }}
               >
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                   What you now have
                 </p>
                 <ul className="mt-2 space-y-1.5">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import SectionHeader from "@/components/ui/section-header";
 import InquiryForm from "@/components/inquiry-form";
 import FunnelCta from "@/components/ui/funnel-cta";
+import FaqSection from "@/components/ui/faq-section";
 import { incubatorPrograms, funnelLinks } from "@/lib/data";
 
 export const metadata = { title: "Advanced Incubator | Vanguard" };
@@ -99,17 +100,7 @@ export default function IncubatorPage() {
         />
       </section>
 
-      <section className="reveal-section mt-16">
-        <h2 className="font-display text-[24px] text-ink">FAQ</h2>
-        <div className="reveal-stagger mt-6 divide-y divide-fog/40">
-          {faqs.map((f) => (
-            <div key={f.q} className="py-5">
-              <p className="font-display text-[18px] text-ink">{f.q}</p>
-              <p className="mt-2 text-[15px] text-driftwood">{f.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection items={faqs} className="reveal-section mt-16" stagger />
 
       <section className="reveal-section mt-16 max-w-xl">
         <InquiryForm

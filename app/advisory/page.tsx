@@ -11,6 +11,7 @@ import InquiryForm from "@/components/inquiry-form";
 import Button from "@/components/ui/button";
 import ResearchCard from "@/components/ui/research-card";
 import FunnelCta from "@/components/ui/funnel-cta";
+import FaqSection from "@/components/ui/faq-section";
 import {
   advisoryServices,
   advisoryProcess,
@@ -90,17 +91,7 @@ export default function AdvisoryPage() {
         </div>
       </section>
 
-      <section className="reveal-section mt-12">
-        <h2 className="font-display text-[24px] text-ink">FAQ</h2>
-        <div className="mt-6 divide-y divide-fog/40">
-          {advisoryFaqs.map((f) => (
-            <div key={f.q} className="py-5">
-              <p className="font-display text-[18px] text-ink">{f.q}</p>
-              <p className="mt-2 text-[15px] text-driftwood">{f.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection items={advisoryFaqs} />
 
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">Related Research</h2>

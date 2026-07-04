@@ -64,7 +64,7 @@ export default function ReportDocument({ report, unlocked }: Props) {
                   style={{ borderRadius: "16px" }}
                 >
                   <div className="absolute inset-0 flex items-center justify-center px-4 text-center">
-                    <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+                    <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
                       {report.tier === "Paid"
                         ? "Purchase to unlock"
                         : "Register to unlock"}

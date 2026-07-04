@@ -101,26 +101,8 @@ a:not(.btn-action):hover,
   animation: cta-banner-shadow 6s var(--ease-in-out) infinite;
 }
 
-.cta-banner__shader {
-  animation: cta-banner-shader 8s var(--ease-in-out) infinite;
-}
-
-@keyframes cta-banner-shader {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1) translate(0%, 0%);
-  }
-
-  33% {
-    opacity: 0.8;
-    transform: scale(1.15) translate(-4%, 6%);
-  }
-
-  66% {
-    opacity: 0.6;
-    transform: scale(1.05) translate(6%, -4%);
-  }
+.cta-banner__video {
+  transform: scale(1.04);
 }
 
 .newsletter-orb {
@@ -504,10 +486,14 @@ a:not(.btn-action):hover,
     transform: none;
   }
 
+  .cta-banner__video {
+    display: none;
+  }
+
   .cta-banner,
   .cta-banner__primary,
   .cta-banner__secondary,
-  .cta-banner__shader,
+  .cta-banner__video,
   .newsletter-orb {
     animation: none;
   }

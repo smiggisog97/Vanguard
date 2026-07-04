@@ -36,7 +36,7 @@ export default function CoveragePanel({
     >
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,380px)_1fr]">
         <div className="border-b border-ash-border px-6 py-8 lg:border-b-0 lg:border-r lg:px-10 lg:py-10">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
             {eyebrow}
           </p>
           <p className="mt-3 font-display text-[26px] leading-[1.2] text-ink">

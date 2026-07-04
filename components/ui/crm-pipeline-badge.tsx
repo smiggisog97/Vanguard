@@ -13,7 +13,7 @@ export default function CrmPipelineBadge({
       role="note"
     >
       <span
-        className="mt-0.5 shrink-0 font-mono text-[10px] font-semibold uppercase tracking-wide text-moss"
+        className="mt-0.5 shrink-0 font-mono text-xs font-semibold uppercase tracking-wide text-moss"
         aria-hidden
       >
         CRM
