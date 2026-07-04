@@ -102,7 +102,7 @@ function ReportDetailInner({
       </section>
 
       {/* Executive Summary — pure typography, no container */}
-      <section className="mt-10">
+      <section className="reveal-section mt-10">
         <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
           Executive Summary
         </p>
@@ -112,11 +112,11 @@ function ReportDetailInner({
       </section>
 
       {/* Key Takeaways — individual cards */}
-      <section className="mt-10">
+      <section className="reveal-section mt-10">
         <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
           Key Takeaways
         </p>
-        <div className="mt-4 grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="reveal-stagger mt-4 grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-3">
           {report.insights.map((item, i) => (
             <div
               key={item}
@@ -132,7 +132,7 @@ function ReportDetailInner({
         </div>
       </section>
 
-      <section className={`mt-10 grid grid-cols-1 gap-12 ${unlocked ? "lg:grid-cols-[220px_1fr]" : "lg:grid-cols-[220px_1fr_380px]"}`}>
+      <section className={`reveal-section mt-10 grid grid-cols-1 gap-12 ${unlocked ? "lg:grid-cols-[220px_1fr]" : "lg:grid-cols-[220px_1fr_380px]"}`}>
         <nav
           aria-label="Table of contents"
           className="lg:sticky lg:top-24 lg:self-start"
@@ -182,16 +182,16 @@ function ReportDetailInner({
         </aside>
       </section>
 
-      <section className="mt-12">
+      <section className="reveal-section mt-12">
         <TagChips tags={report.tags} />
       </section>
 
       {related.length > 0 ? (
-        <section className="mt-16 pt-12">
+        <section className="reveal-section mt-16 pt-12">
           <h2 className="font-display text-[24px] text-ink">
             Related Research
           </h2>
-          <div className="mt-6 grid grid-cols-1 gap-1 md:grid-cols-3">
+          <div className="reveal-stagger mt-6 grid grid-cols-1 gap-1 md:grid-cols-3">
             {related.map((r) => (
               <ResearchCard key={r.slug} report={r} />
             ))}
@@ -199,7 +199,7 @@ function ReportDetailInner({
         </section>
       ) : null}
 
-      <section className="mt-12 grid grid-cols-1 gap-1 md:grid-cols-2">
+      <section className="reveal-section mt-12 grid grid-cols-1 gap-1 md:grid-cols-2">
         <FunnelCta
           href={funnelLinks.researchToAdvisory.href}
           label={funnelLinks.researchToAdvisory.label}
