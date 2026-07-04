@@ -43,14 +43,14 @@ export default function CTABanner({
         <div className="flex w-full flex-col gap-3 border-t border-white/10 pt-6 md:w-auto md:shrink-0 md:border-t-0 md:pt-0">
           <Link
             href={primary.href}
-            className="cta-banner__primary btn-action inline-flex items-center justify-center rounded-[12px] bg-parchment px-5 py-3 text-[15px] font-medium text-ink transition-colors hover:bg-white hover:text-ink"
+            className="cta-banner__primary btn-action inline-flex items-center justify-center rounded-full bg-parchment px-5 py-3 text-[15px] font-medium text-ink transition-colors hover:bg-white hover:text-ink"
           >
             {primary.label}
           </Link>
           {secondary ? (
             <Link
               href={secondary.href}
-              className="cta-banner__secondary btn-action inline-flex items-center justify-center rounded-[12px] border border-white/20 px-5 py-3 text-[15px] font-medium text-parchment transition-colors hover:border-white/35 hover:bg-white/5 hover:text-parchment"
+              className="cta-banner__secondary btn-action inline-flex items-center justify-center rounded-full px-5 py-3 text-[15px] font-medium text-parchment"
             >
               {secondary.label}
             </Link>
