@@ -104,7 +104,7 @@ function ReportDetailInner({
 
       {/* Executive Summary — pure typography, no container */}
       <section className="mt-10">
-        <p className="font-mono text-[9px] font-semibold uppercase tracking-widest text-driftwood">
+        <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
           Executive Summary
         </p>
         <p className="mt-4 max-w-3xl font-display text-[26px] leading-[1.4] text-ink md:text-[30px]">
@@ -114,7 +114,7 @@ function ReportDetailInner({
 
       {/* Key Takeaways — individual cards */}
       <section className="mt-10">
-        <p className="font-mono text-[9px] font-semibold uppercase tracking-widest text-driftwood">
+        <p className="font-mono text-xs font-semibold uppercase tracking-wide text-driftwood">
           Key Takeaways
         </p>
         <div className="mt-4 grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-3">

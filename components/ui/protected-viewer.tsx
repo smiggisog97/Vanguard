@@ -9,18 +9,6 @@ export default function ProtectedViewer({
 }) {
   return (
     <div className="relative">
-      <div
-        className="mb-4 flex flex-wrap items-center gap-3 bg-warm-sand px-4 py-3"
-        style={{ borderRadius: "16px" }}
-        role="status"
-      >
-        <span className="font-mono text-[10px] font-semibold uppercase tracking-wide text-moss">
-          Secure viewer
-        </span>
-        <span className="text-[13px] text-driftwood">
-          Signed access · Watermarked · Session-bound
-        </span>
-      </div>
       <div className="protected-viewer relative">
         {children}
         <div
