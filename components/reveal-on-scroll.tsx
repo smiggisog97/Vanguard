@@ -18,18 +18,19 @@ export default function RevealOnScroll() {
       return;
     }
 
-    const pending = document.querySelectorAll(
-      ".reveal-section:not(.is-revealed)",
+    // Immediately reveal anything already in the viewport on mount
+    const pending = Array.from(
+      document.querySelectorAll<Element>(".reveal-section:not(.is-revealed)"),
     );
 
     pending.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
-      if (inView) {
+      if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
         el.classList.add("is-revealed");
       }
     });
 
+    // Observe the rest — trigger when top edge is 80px inside the viewport
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -39,7 +40,10 @@ export default function RevealOnScroll() {
           }
         });
       },
-      { threshold: 0.01, rootMargin: "0px" },
+      {
+        threshold: 0,
+        rootMargin: "0px 0px -80px 0px",
+      },
     );
 
     pending.forEach((el) => {
@@ -48,7 +52,8 @@ export default function RevealOnScroll() {
       }
     });
 
-    const fallback = window.setTimeout(revealAll, 150);
+    // Safety fallback: reveal anything still hidden after 2 s
+    const fallback = window.setTimeout(revealAll, 2000);
 
     return () => {
       window.clearTimeout(fallback);

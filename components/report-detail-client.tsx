@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import ParallaxImage from "@/components/ui/parallax-image";
 import { Suspense, useRef, useState } from "react";
 import type { Report } from "@/lib/data";
 import { funnelLinks } from "@/lib/data";
@@ -50,10 +50,9 @@ function ReportDetailInner({
         className="relative mt-6 aspect-[21/9] w-full overflow-hidden"
         style={{ borderRadius: "16px" }}
       >
-        <Image
+        <ParallaxImage
           src={`https://picsum.photos/seed/${report.slug}-cover/1400/600`}
           alt=""
-          fill
           className="object-cover"
           style={{ filter: "grayscale(1)" }}
           priority

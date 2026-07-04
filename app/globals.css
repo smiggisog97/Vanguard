@@ -31,9 +31,12 @@
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-fast: 160ms;
   --duration-ui: 220ms;
   --duration-enter: 360ms;
+  --duration-reveal: 680ms;
+  --duration-reveal-stagger: 560ms;
 }
 
 @theme inline {
@@ -400,30 +403,38 @@ a:not(.btn-action):hover,
 /* Section entrance */
 .reveal-section {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(32px);
+  filter: blur(4px);
   transition:
-    opacity var(--duration-enter) var(--ease-out),
-    transform var(--duration-enter) var(--ease-out);
+    opacity var(--duration-reveal) var(--ease-expo),
+    transform var(--duration-reveal) var(--ease-expo),
+    filter var(--duration-reveal) var(--ease-expo);
+  will-change: opacity, transform, filter;
 }
 
 .reveal-section.is-revealed {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0px);
 }
 
 .reveal-stagger > * {
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(18px);
+  filter: blur(3px);
   transition:
-    opacity var(--duration-enter) var(--ease-out),
-    transform var(--duration-enter) var(--ease-out);
-  transition-delay: calc(var(--stagger-index, 0) * 45ms);
+    opacity var(--duration-reveal-stagger) var(--ease-expo),
+    transform var(--duration-reveal-stagger) var(--ease-expo),
+    filter var(--duration-reveal-stagger) var(--ease-expo);
+  transition-delay: calc(var(--stagger-index, 0) * 55ms);
+  will-change: opacity, transform, filter;
 }
 
 .reveal-section.is-revealed.reveal-stagger > *,
 .reveal-section.is-revealed .reveal-stagger > * {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0px);
 }
 
 .reveal-stagger > *:nth-child(1) {
@@ -505,6 +516,7 @@ a:not(.btn-action):hover,
   .reveal-stagger > * {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 }
