@@ -19,11 +19,11 @@ export default function CTABanner({
       style={{ borderRadius: "12px" }}
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-80"
+        className="cta-banner__shader pointer-events-none absolute inset-0"
         aria-hidden
         style={{
           background:
-            "radial-gradient(ellipse 80% 70% at 100% 0%, rgba(245, 78, 0, 0.1), transparent 55%)",
+            "radial-gradient(ellipse 80% 70% at 100% 0%, rgba(245, 78, 0, 0.14), transparent 55%)",
         }}
       />
 

@@ -144,11 +144,22 @@ export default function Home() {
       {/* Corporate Advisory */}
       <section className="reveal-section mx-auto max-w-[1200px] px-6 py-[61px]">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-          <SectionHeader
-            eyebrow="Corporate Advisory"
-            title="Capital strategy and governance for corporates and family businesses"
-            description="Five service lines that move clients from research credibility to institutional capital readiness."
-          />
+          <div className="max-w-2xl">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-royal">
+              Corporate Advisory
+            </p>
+            <h2 className="mt-3 font-display text-[36px] leading-[1.1] text-ink md:text-[44px]">
+              Capital strategy and governance for corporates and family businesses
+            </h2>
+            <p className="mt-4 text-[18px] leading-[1.5] text-driftwood">
+              Five service lines that move clients from research credibility to institutional capital readiness.
+            </p>
+            <div className="mt-6">
+              <Button href="/advisory" variant="dark">
+                Explore Corporate Advisory
+              </Button>
+            </div>
+          </div>
           <div className="reveal-stagger grid grid-cols-1 gap-1 md:grid-cols-2">
             {advisoryServices.slice(0, 4).map((s) => (
               <FeatureCard
@@ -161,11 +172,6 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
-        <div className="mt-8">
-          <Button href="/advisory" variant="dark">
-            Explore Corporate Advisory
-          </Button>
         </div>
       </section>
 

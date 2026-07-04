@@ -45,8 +45,9 @@ export default function ReportDocument({ report, unlocked }: Props) {
               fill
               className="object-cover"
               style={{ filter: "grayscale(1)" }}
-              loading="lazy"
-              unoptimized
+            loading="lazy"
+            unoptimized
+            decoding="async"
             />
             <span className="absolute bottom-2 right-2 bg-parchment px-2 py-0.5 font-mono text-[10px] text-driftwood">
               Page {page}

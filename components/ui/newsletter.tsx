@@ -18,7 +18,7 @@ export default function Newsletter() {
     >
       <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
         <div
-          className="mb-6 h-12 w-12 rounded-full"
+          className="newsletter-orb mb-6 h-12 w-12 rounded-full"
           style={{
             background:
               "radial-gradient(circle at 30% 30%, var(--color-royal), var(--color-gold))",
@@ -72,8 +72,8 @@ export default function Newsletter() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@company.com"
                 aria-label="Email for newsletter"
-                className="w-full bg-parchment px-4 py-3 text-[15px] text-ink placeholder:text-driftwood focus:outline-2 focus:outline-ink/10 focus:outline-offset-0"
-                style={{ borderRadius: "4px" }}
+                className="w-full bg-parchment px-5 py-3 text-[15px] text-ink placeholder:text-driftwood focus:outline-2 focus:outline-ink/10 focus:outline-offset-0"
+                style={{ borderRadius: "9999px" }}
               />
               <button
                 type="submit"

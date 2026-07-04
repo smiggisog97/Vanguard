@@ -5,6 +5,7 @@ import Link from "next/link";
 import SectionHeader from "@/components/ui/section-header";
 import Newsletter from "@/components/ui/newsletter";
 import PodcastCard from "@/components/ui/podcast-card";
+import { Chip } from "@/components/ui/funnel-cta";
 import { insights, insightCategories } from "@/lib/data";
 
 export default function InsightsPage() {
@@ -55,6 +56,7 @@ export default function InsightsPage() {
                 title={item.title}
                 date={item.date}
                 excerpt={item.excerpt}
+                href={`/insights/${item.slug}`}
               />
             ) : (
               <Link
@@ -63,16 +65,13 @@ export default function InsightsPage() {
                 className="card-lift bg-warm-sand p-[31px] transition-colors"
                 style={{ borderRadius: "16px" }}
               >
-                <p className="font-mono text-xs font-semibold uppercase tracking-wide text-royal">
-                  {item.type}
-                </p>
+                <Chip>{`${item.type} · ${item.date}`}</Chip>
                 <h3 className="mt-3 font-display text-[22px] leading-[1.3] text-ink">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-[15px] leading-[1.5] text-driftwood line-clamp-3">
                   {item.excerpt}
                 </p>
-                <p className="mt-4 text-[13px] text-driftwood">{item.date}</p>
               </Link>
             ),
           )}

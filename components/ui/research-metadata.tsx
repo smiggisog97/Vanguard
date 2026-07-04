@@ -9,22 +9,26 @@ function formatDate(iso: string) {
   });
 }
 
-function MetaPair({ label, value }: { label: string; value: string }) {
+function StatCell({
+  label,
+  value,
+  chip,
+}: {
+  label: string;
+  value?: string;
+  chip?: React.ReactNode;
+}) {
   return (
-    <span className="inline-flex items-baseline gap-1.5">
-      <span className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
+    <div className="flex min-w-0 flex-col gap-1 px-5 first:pl-0 last:pr-0">
+      <span className="font-mono text-[9px] font-semibold uppercase tracking-wider text-driftwood">
         {label}
       </span>
-      <span className="text-[14px] text-ink">{value}</span>
-    </span>
-  );
-}
-
-function Dot() {
-  return (
-    <span aria-hidden className="select-none text-ash-border">
-      ·
-    </span>
+      {chip ?? (
+        <span className="truncate text-[14px] font-medium text-ink">
+          {value}
+        </span>
+      )}
+    </div>
   );
 }
 
@@ -33,42 +37,27 @@ export default function ResearchMetadata({ report }: { report: Report }) {
 
   return (
     <aside
-      className="border-y border-ash-border py-6"
+      className="rounded-[12px] bg-warm-sand px-6 py-5"
       aria-label="Research brief details"
     >
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-        <div className="min-w-0 border-l-2 border-royal pl-5">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-wide text-driftwood">
-            Research brief
-          </p>
-          <p className="mt-2 font-display text-[24px] leading-[1.2] text-ink">
-            {report.author}
-          </p>
-          <p className="mt-3 max-w-md text-[15px] leading-[1.55] text-driftwood">
-            {report.industry}
-            <Dot />
-            {report.category}
-            <Dot />
-            {report.researchType}
-            <Dot />
-            {report.country}
-          </p>
-        </div>
-
-        <div className="flex shrink-0 flex-col items-start gap-4 lg:items-end lg:pt-1">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2 lg:justify-end">
-            <MetaPair label="Published" value={formatDate(report.date)} />
-            {revised ? (
-              <>
-                <Dot />
-                <MetaPair label="Revised" value={formatDate(report.updatedAt)} />
-              </>
-            ) : null}
-          </div>
-          <Chip tone={report.tier === "Free" ? "royal" : "gold"}>
-            {report.tier === "Free" ? "Free" : report.price}
-          </Chip>
-        </div>
+      <div className="flex flex-wrap items-center divide-x divide-fog/50">
+        <StatCell label="Author" value={report.author} />
+        <StatCell label="Category" value={report.category} />
+        <StatCell label="Type" value={report.researchType} />
+        <StatCell label="Country" value={report.country} />
+        <StatCell label="Industry" value={report.industry} />
+        <StatCell label="Published" value={formatDate(report.date)} />
+        {revised ? (
+          <StatCell label="Revised" value={formatDate(report.updatedAt)} />
+        ) : null}
+        <StatCell
+          label="Access"
+          chip={
+            <Chip tone={report.tier === "Free" ? "royal" : "gold"}>
+              {report.tier === "Free" ? "Free" : report.price}
+            </Chip>
+          }
+        />
       </div>
     </aside>
   );

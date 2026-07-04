@@ -344,6 +344,8 @@ export default function ResearchPurchaseFlow({
                     fill
                     className="object-cover"
                     style={{ filter: "grayscale(1)" }}
+                    unoptimized
+                    decoding="async"
                   />
                 </div>
                 <div className="p-5">

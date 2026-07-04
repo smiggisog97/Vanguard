@@ -220,8 +220,8 @@ export default function ResearchLibrary({ reports }: { reports: Report[] }) {
               Filters
             </button>
             <div
-              className="flex"
-              style={{ borderRadius: "4px" }}
+              className="flex items-center gap-1 bg-warm-sand p-1"
+              style={{ borderRadius: "9999px" }}
               role="group"
               aria-label="View mode"
             >
@@ -229,18 +229,20 @@ export default function ResearchLibrary({ reports }: { reports: Report[] }) {
                 type="button"
                 onClick={() => setView("grid")}
                 aria-pressed={view === "grid"}
-                className={`inline-flex items-center gap-1.5 px-3 py-2 text-[13px] ${view === "grid" ? "bg-ink text-parchment" : "bg-parchment text-ink"}`}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-medium transition-colors ${view === "grid" ? "bg-ink text-parchment" : "text-driftwood hover:text-ink"}`}
+                style={{ borderRadius: "9999px" }}
               >
-                <LucideIcon name="layout-grid" size={14} />
+                <LucideIcon name="layout-grid" size={13} />
                 Grid
               </button>
               <button
                 type="button"
                 onClick={() => setView("list")}
                 aria-pressed={view === "list"}
-                className={`inline-flex items-center gap-1.5 px-3 py-2 text-[13px] ${view === "list" ? "bg-ink text-parchment" : "bg-parchment text-ink"}`}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-medium transition-colors ${view === "list" ? "bg-ink text-parchment" : "text-driftwood hover:text-ink"}`}
+                style={{ borderRadius: "9999px" }}
               >
-                <LucideIcon name="list" size={14} />
+                <LucideIcon name="list" size={13} />
                 List
               </button>
             </div>

@@ -72,6 +72,7 @@ export default function ResearchCard({
             style={{ filter: "grayscale(1)" }}
             loading="lazy"
             unoptimized
+            decoding="async"
           />
         </div>
         <div className="p-[31px]">

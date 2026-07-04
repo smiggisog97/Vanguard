@@ -10,12 +10,16 @@ const interTight = Inter_Tight({
   variable: "--font-intertight",
   subsets: ["latin"],
   weight: ["400", "500"],
+  display: "swap",
+  preload: true,
 });
 
 const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
   weight: ["400", "500"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

@@ -92,9 +92,9 @@ export default function AdvisoryPage() {
 
       <section className="reveal-section mt-12">
         <h2 className="font-display text-[24px] text-ink">FAQ</h2>
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 divide-y divide-fog/40">
           {advisoryFaqs.map((f) => (
-            <div key={f.q} className="pb-4">
+            <div key={f.q} className="py-5">
               <p className="font-display text-[18px] text-ink">{f.q}</p>
               <p className="mt-2 text-[15px] text-driftwood">{f.a}</p>
             </div>
@@ -111,27 +111,26 @@ export default function AdvisoryPage() {
         </div>
       </section>
 
-      <section className="reveal-section mt-12">
-        <FunnelCta
-          href={funnelLinks.advisoryToResearch.href}
-          label={funnelLinks.advisoryToResearch.label}
-          description="Ground your advisory engagement in Vanguard's published research."
-        />
-      </section>
-
       <section className="reveal-section mt-16 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_420px]">
-        <div>
-          <h2 className="font-display text-[24px] text-ink">
-            Book a consultation
-          </h2>
-          <p className="mt-2 max-w-md text-[15px] text-driftwood">
-            Talk to our advisory team about your capital strategy, governance,
-            or investor-readiness needs.
-          </p>
-          <div className="mt-6">
-            <Button href="/contact" variant="dark">
-              Book Consultation Call
-            </Button>
+        <div className="flex flex-col gap-6">
+          <FunnelCta
+            href={funnelLinks.advisoryToResearch.href}
+            label={funnelLinks.advisoryToResearch.label}
+            description="Ground your advisory engagement in Vanguard's published research."
+          />
+          <div>
+            <h2 className="font-display text-[24px] text-ink">
+              Book a consultation
+            </h2>
+            <p className="mt-2 max-w-md text-[15px] text-driftwood">
+              Talk to our advisory team about your capital strategy, governance,
+              or investor-readiness needs.
+            </p>
+            <div className="mt-6">
+              <Button href="/contact" variant="dark">
+                Book Consultation Call
+              </Button>
+            </div>
           </div>
         </div>
         <InquiryForm

@@ -11,11 +11,11 @@ import Button from "@/components/ui/button";
 import ResearchCard from "@/components/ui/research-card";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 import FunnelCta, { TagChips } from "@/components/ui/funnel-cta";
-import ResearchMetadata from "@/components/ui/research-metadata";
 import BookmarkButton, { ShareButton } from "@/components/ui/bookmark-button";
 import ReportDocument from "@/components/report-document";
 import ReportGate from "@/components/report-gate";
 import { BackLink } from "@/components/ui/back-link";
+import { LucideIcon } from "@/components/ui/lucide-icon";
 import { useAuth } from "@/components/auth-provider";
 
 function ReportDetailInner({
@@ -58,6 +58,8 @@ function ReportDetailInner({
           style={{ filter: "grayscale(1)" }}
           priority
           unoptimized
+          fetchPriority="high"
+          decoding="async"
         />
       </div>
 
@@ -80,6 +82,10 @@ function ReportDetailInner({
         <p className="mt-4 max-w-2xl text-[18px] leading-[1.5] text-driftwood">
           {report.summary}
         </p>
+        <p className="mt-3 flex items-center gap-1.5 text-[13px] font-normal text-driftwood" style={{ fontFamily: "var(--font-intertight)" }}>
+          <LucideIcon name="user" size={13} />
+          {report.author} · {new Date(`${report.date}T00:00:00`).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+        </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <BookmarkButton slug={report.slug} />
           <ShareButton report={report} />
@@ -96,30 +102,35 @@ function ReportDetailInner({
         </div>
       </section>
 
-      <section className="mt-8">
-        <ResearchMetadata report={report} />
-      </section>
-
+      {/* Executive Summary — pure typography, no container */}
       <section className="mt-10">
-        <h2 className="font-display text-[24px] text-ink">Executive Summary</h2>
-        <p className="mt-4 max-w-3xl text-[16px] leading-[1.65] text-driftwood">
+        <p className="font-mono text-[9px] font-semibold uppercase tracking-widest text-driftwood">
+          Executive Summary
+        </p>
+        <p className="mt-4 max-w-3xl font-display text-[26px] leading-[1.4] text-ink md:text-[30px]">
           {report.summary}
         </p>
       </section>
 
+      {/* Key Takeaways — individual cards */}
       <section className="mt-10">
-        <h2 className="font-display text-[24px] text-ink">Key Takeaways</h2>
-        <ul className="mt-4 space-y-3">
-          {report.insights.map((item) => (
-            <li
+        <p className="font-mono text-[9px] font-semibold uppercase tracking-widest text-driftwood">
+          Key Takeaways
+        </p>
+        <div className="mt-4 grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-3">
+          {report.insights.map((item, i) => (
+            <div
               key={item}
-              className="flex gap-3 text-[16px] leading-[1.5] text-ink"
+              className="bg-warm-sand px-5 py-6"
+              style={{ borderRadius: "12px" }}
             >
-              <span className="text-royal">·</span>
-              {item}
-            </li>
+              <span className="font-mono text-[10px] font-semibold text-driftwood">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="mt-3 text-[14px] leading-[1.6] text-ink">{item}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section className={`mt-10 grid grid-cols-1 gap-12 ${unlocked ? "lg:grid-cols-[220px_1fr]" : "lg:grid-cols-[220px_1fr_380px]"}`}>

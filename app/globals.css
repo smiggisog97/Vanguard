@@ -98,6 +98,58 @@ a:not(.btn-action):hover,
   animation: cta-banner-shadow 6s var(--ease-in-out) infinite;
 }
 
+.cta-banner__shader {
+  animation: cta-banner-shader 8s var(--ease-in-out) infinite;
+}
+
+@keyframes cta-banner-shader {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1) translate(0%, 0%);
+  }
+
+  33% {
+    opacity: 0.8;
+    transform: scale(1.15) translate(-4%, 6%);
+  }
+
+  66% {
+    opacity: 0.6;
+    transform: scale(1.05) translate(6%, -4%);
+  }
+}
+
+.newsletter-orb {
+  animation: newsletter-orb-morph 6s var(--ease-in-out) infinite;
+}
+
+@keyframes newsletter-orb-morph {
+  0% {
+    border-radius: 50%;
+  }
+
+  20% {
+    border-radius: 42% 58% 35% 65% / 60% 40% 60% 40%;
+  }
+
+  40% {
+    border-radius: 8px;
+  }
+
+  60% {
+    border-radius: 60% 40% 55% 45% / 40% 60% 40% 60%;
+  }
+
+  80% {
+    border-radius: 25% 75% 30% 70% / 55% 45% 55% 45%;
+  }
+
+  100% {
+    border-radius: 50%;
+  }
+}
+
 .cta-banner__primary {
   animation: cta-banner-btn-primary 4.5s var(--ease-in-out) infinite;
 }
@@ -443,11 +495,10 @@ a:not(.btn-action):hover,
 
   .cta-banner,
   .cta-banner__primary,
-  .cta-banner__secondary {
+  .cta-banner__secondary,
+  .cta-banner__shader,
+  .newsletter-orb {
     animation: none;
-    box-shadow:
-      0 8px 24px rgba(20, 20, 20, 0.1),
-      0 2px 6px rgba(20, 20, 20, 0.05);
   }
 
   .reveal-section,

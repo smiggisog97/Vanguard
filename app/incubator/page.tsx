@@ -34,86 +34,60 @@ export default function IncubatorPage() {
 
       <section className="reveal-section mt-12">
         <div className="reveal-stagger grid grid-cols-1 gap-1 md:grid-cols-2">
-          {incubatorPrograms.map((p, i) => {
-            const isOpen = p.cohortStatus === "Open";
-            return (
-              <div
-                key={p.slug}
-                className={`flex flex-col justify-between p-[31px] ${isOpen ? "bg-ink" : "bg-warm-sand"}`}
-                style={{ borderRadius: "16px" }}
-              >
-                {/* Top */}
-                <div>
-                  <div className="flex items-start justify-between gap-4">
-                    <span
-                      className={`font-mono text-[11px] font-semibold uppercase tracking-wide ${isOpen ? "text-parchment/50" : "text-driftwood"}`}
-                    >
-                      {p.audience}
-                    </span>
-                    <span
-                      className={`font-mono text-[11px] font-semibold uppercase tracking-wide ${
-                        isOpen
-                          ? "text-moss"
-                          : p.cohortStatus === "Waitlist"
-                            ? "text-gold"
-                            : "text-driftwood"
-                      }`}
-                    >
-                      {p.cohortStatus}
-                    </span>
-                  </div>
-
-                  <span
-                    className={`mt-6 block font-display text-[80px] leading-none font-light ${isOpen ? "text-parchment/10" : "text-ink/8"}`}
-                    aria-hidden
-                  >
-                    {String(i + 1).padStart(2, "0")}
+          {incubatorPrograms.map((p) => (
+            <div
+              key={p.slug}
+              className="flex flex-col justify-between bg-warm-sand p-[31px]"
+              style={{ borderRadius: "16px" }}
+            >
+              {/* Top */}
+              <div>
+                <div className="flex items-start justify-between gap-4">
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-wide text-driftwood">
+                    {p.audience}
                   </span>
-
-                  <h2
-                    className={`mt-2 font-display text-[28px] leading-[1.1] md:text-[32px] ${isOpen ? "text-parchment" : "text-ink"}`}
+                  <span
+                    className={`font-mono text-[11px] font-semibold uppercase tracking-wide ${
+                      p.cohortStatus === "Open"
+                        ? "text-moss"
+                        : p.cohortStatus === "Waitlist"
+                          ? "text-gold"
+                          : "text-driftwood"
+                    }`}
                   >
-                    {p.title}
-                  </h2>
-                  <p
-                    className={`mt-4 text-[15px] leading-[1.55] ${isOpen ? "text-parchment/60" : "text-driftwood"}`}
-                  >
-                    {p.overview}
-                  </p>
+                    {p.cohortStatus}
+                  </span>
                 </div>
 
-                {/* Bottom */}
-                <div
-                  className={`mt-8 border-t pt-6 ${isOpen ? "border-white/10" : "border-fog/40"}`}
-                >
-                  <div className="flex flex-wrap items-end justify-between gap-4">
-                    <div className="space-y-1">
-                      <p
-                        className={`font-mono text-[11px] uppercase tracking-wide ${isOpen ? "text-parchment/40" : "text-driftwood"}`}
-                      >
-                        {p.duration}
-                      </p>
-                      <p
-                        className={`font-display text-[22px] ${isOpen ? "text-parchment" : "text-ink"}`}
-                      >
-                        {p.price}
-                      </p>
-                    </div>
-                    <Link
-                      href={`/incubator/${p.slug}`}
-                      className={`btn-action inline-flex items-center justify-center rounded-full px-5 py-2 text-[14px] font-medium transition-colors ${
-                        isOpen
-                          ? "bg-parchment text-ink hover:bg-white"
-                          : "bg-ink text-parchment hover:bg-hover hover:text-parchment"
-                      }`}
-                    >
-                      View program
-                    </Link>
+                <h2 className="mt-2 font-display text-[28px] leading-[1.1] text-ink md:text-[32px]">
+                  {p.title}
+                </h2>
+                <p className="mt-4 text-[15px] leading-[1.55] text-driftwood">
+                  {p.overview}
+                </p>
+              </div>
+
+              {/* Bottom */}
+              <div className="mt-8 border-t border-fog/40 pt-6">
+                <div className="flex flex-wrap items-end justify-between gap-4">
+                  <div className="space-y-1">
+                    <p className="font-mono text-[11px] uppercase tracking-wide text-driftwood">
+                      {p.duration}
+                    </p>
+                    <p className="font-display text-[22px] text-ink">
+                      {p.price}
+                    </p>
                   </div>
+                  <Link
+                    href={`/incubator/${p.slug}`}
+                    className="btn-action inline-flex items-center justify-center rounded-full bg-ink px-5 py-2 text-[14px] font-medium text-parchment transition-colors hover:bg-hover hover:text-parchment"
+                  >
+                    View program
+                  </Link>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -127,9 +101,9 @@ export default function IncubatorPage() {
 
       <section className="reveal-section mt-16">
         <h2 className="font-display text-[24px] text-ink">FAQ</h2>
-        <div className="reveal-stagger mt-6 space-y-4">
+        <div className="reveal-stagger mt-6 divide-y divide-fog/40">
           {faqs.map((f) => (
-            <div key={f.q} className="pb-4">
+            <div key={f.q} className="py-5">
               <p className="font-display text-[18px] text-ink">{f.q}</p>
               <p className="mt-2 text-[15px] text-driftwood">{f.a}</p>
             </div>
